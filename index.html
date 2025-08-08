@@ -2,58 +2,291 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aravind Paraniraja | Power BI Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aravind Paraniraja | Data Engineering Portfolio</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.6; }
-    header { background: linear-gradient(135deg, #4f46e5, #3b82f6); color: white; padding: 60px 20px; text-align: center; }
-    nav { display: flex; justify-content: center; gap: 30px; background-color: #e5e7eb; padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
-    nav a { color: #1f2937; text-decoration: none; font-weight: 500; }
-    nav a:hover { text-decoration: underline; }
-    section { padding: 60px 20px; max-width: 1000px; margin: auto; }
-    h2 { color: #1d4ed8; margin-bottom: 20px; border-bottom: 2px solid #93c5fd; padding-bottom: 10px; }
-    ul { list-style-type: disc; padding-left: 20px; }
-    a { color: #2563eb; }
+    /* Base styling */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      scroll-behavior: smooth;
+    }
+    html {
+      scroll-behavior: smooth; /* Smooth scrolling */
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+    a:hover, a:focus {
+      color: #007acc;
+      outline: none;
+    }
+    header {
+      background: #fff;
+      padding: 80px 20px 50px;
+      text-align: center;
+      border-bottom: 2px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+      animation: fadeInDown 1s ease forwards;
+
+      /* This is very important for offsetting anchor jump */
+      scroll-margin-top: 140px; /* offset for sticky header */
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      color: #111;
+    }
+    header p {
+      font-weight: 300;
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #fafafa;
+      border-bottom: 1px solid #ddd;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.03);
+      position: sticky;
+      top: 140px; /* below header */
+      z-index: 90;
+      animation: fadeIn 1.3s ease forwards;
+      flex-wrap: wrap;
+    }
+    nav a {
+      padding: 16px 24px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #333;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #007acc;
+      border-bottom: 3px solid #007acc;
+      outline: none;
+    }
+    section {
+      max-width: 960px;
+      margin: 60px auto;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease forwards;
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 1.9rem;
+      color: #111;
+      margin-bottom: 24px;
+      border-bottom: 3px solid #ddd;
+      padding-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    p, ul {
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    ul {
+      padding-left: 20px;
+      margin-top: 12px;
+      margin-bottom: 30px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    /* Projects grid */
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
       gap: 30px;
+    }
+    .project {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project:hover,
+    .project:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
+      outline: none;
     }
     .project img {
       width: 100%;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 5px rgb(0 0 0 / 0.1);
+      border: 1px solid #ddd;
+      transition: filter 0.3s ease;
+    }
+    .project:hover img,
+    .project:focus-within img {
+      filter: brightness(1.1);
     }
     .project h3 {
-      margin-top: 10px;
-      font-size: 1.1rem;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.3rem;
     }
     .project p {
-      font-size: 0.95em;
+      font-weight: 300;
+      font-size: 1rem;
+      color: #555;
     }
-    .contact-form { display: flex; flex-direction: column; gap: 15px; }
-    .contact-form input, .contact-form textarea { padding: 10px; font-size: 1em; border: 1px solid #cbd5e1; border-radius: 5px; }
-    .contact-form button { background-color: #2563eb; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-    .top-link { position: fixed; bottom: 20px; right: 20px; background-color: #1d4ed8; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; }
-    footer { background-color: #f3f4f6; color: #1f2937; text-align: center; padding: 20px; }
+    /* Resume iframe */
+    #resume iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.3s ease;
+    }
+    #resume iframe:hover,
+    #resume iframe:focus {
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
+      outline: none;
+    }
+    /* Contact form */
+    form.contact-form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    input, textarea {
+      padding: 12px 15px;
+      font-size: 1.1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      color: #111;
+    }
+    input:focus, textarea:focus {
+      border-color: #007acc;
+      outline: none;
+    }
+    button {
+      background: #007acc;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover, button:focus {
+      background: #005fa3;
+      outline: none;
+    }
+    /* Top link button */
+    .top-link {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #007acc;
+      color: white;
+      padding: 12px 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      opacity: 0.85;
+      box-shadow: 0 4px 15px rgba(0,122,204,0.3);
+      transition: opacity 0.3s ease, background 0.3s ease;
+      z-index: 1000;
+    }
+    .top-link:hover, .top-link:focus {
+      opacity: 1;
+      background: #005fa3;
+      outline: none;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      background: #f7f7f7;
+      color: #666;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+    footer a {
+      color: #007acc;
+      font-weight: 600;
+    }
+    footer a:hover, footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    /* Animations */
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    /* Responsive */
     @media (max-width: 900px) {
-      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     @media (max-width: 600px) {
-      .project-grid { grid-template-columns: 1fr; }
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      nav a {
+        flex-basis: 45%;
+        margin: 8px 0;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 
-<header id="top">
+<header id="top" tabindex="0">
   <h1>Aravind Paraniraja</h1>
-  <p>Power BI Developer | Data Engineer | Automation Expert</p>
+  <p>Data Engineer | Power BI Developer | Automation Specialist</p>
 </header>
 
-<nav>
+<nav role="navigation" aria-label="Main navigation">
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
@@ -62,91 +295,108 @@
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
+<section id="about" tabindex="0" aria-label="About Me section">
   <h2>About Me</h2>
-  <p>I’m a data professional with 12+ years of experience, including 8 years in Power BI. I specialize in creating automated, scalable reporting solutions using Power BI, Power Automate, and Power Apps.</p>
+  <p>I’m a data professional with 12+ years of experience, including 8 years specializing in Power BI. I deliver automated, scalable reporting solutions using tools like Power BI, Power Automate, and Power Apps to help businesses unlock data-driven decisions.</p>
 </section>
 
-<section id="skills">
+<section id="skills" tabindex="0" aria-label="Skills section">
   <h2>Skills</h2>
   <ul>
     <li>Power BI (DAX, Data Modeling, Dashboard Design)</li>
-    <li>Power Automate, Power Apps</li>
+    <li>Power Automate & Power Apps</li>
     <li>SQL, Excel (VBA & Power Query)</li>
     <li>Azure Data Factory, Blob Storage</li>
     <li>PostgreSQL, Pentaho, QlikView</li>
-    <li>Prompt Engineering with AI tools</li>
+    <li>Prompt Engineering with AI Tools</li>
     <li>AI Agent Developer</li>
   </ul>
 </section>
 
-<section id="projects">
+<section id="projects" tabindex="0" aria-label="Projects section">
   <h2>My Projects</h2>
   <div class="project-grid">
-    <div class="project">
-      <h3>Inventory Dashboard</h3>
-      <img src="project4.PNG" alt="Inventory Dashboard">
+    <article class="project" tabindex="0" aria-labelledby="project1-title">
+      <img src="project4.PNG" alt="Inventory Dashboard showing real-time tracking" loading="lazy" />
+      <h3 id="project1-title">Inventory Dashboard</h3>
       <p>Real-time tracking of inventory levels, turnover, and stock value with vendor-wise segmentation.</p>
-    </div>
-    <div class="project">
-      <h3>Loan Portfolio Tracker</h3>
-      <img src="project1.PNG" alt="Loan Tracker">
+    </article>
+    <article class="project" tabindex="0" aria-labelledby="project2-title">
+      <img src="project1.PNG" alt="Loan Portfolio Tracker dashboard" loading="lazy" />
+      <h3 id="project2-title">Loan Portfolio Tracker</h3>
       <p>Summarizes loan status, funding trends, and financial health indicators across customer segments.</p>
-    </div>
-    <div class="project">
-      <h3>HR Analytics Dashboard</h3>
-      <img src="project3.PNG" alt="HR Dashboard">
+    </article>
+    <article class="project" tabindex="0" aria-labelledby="project3-title">
+      <img src="project3.PNG" alt="HR Analytics Dashboard" loading="lazy" />
+      <h3 id="project3-title">HR Analytics Dashboard</h3>
       <p>Highlights attrition, salary analysis, and department-wise breakdowns to empower HR decisions.</p>
-    </div>
-    <div class="project">
-      <h3>Supply Chain Analytics</h3>
-      <img src="project5.PNG" alt="Supply Chain Dashboard">
+    </article>
+    <article class="project" tabindex="0" aria-labelledby="project4-title">
+      <img src="project5.PNG" alt="Supply Chain Analytics Dashboard" loading="lazy" />
+      <h3 id="project4-title">Supply Chain Analytics</h3>
       <p>Visualizes end-to-end product flow from procurement to delivery across multiple sales channels.</p>
-    </div>
-    <div class="project">
-      <h3>Crypto Market Insights</h3>
-      <img src="project2.PNG" alt="Crypto Dashboard">
+    </article>
+    <article class="project" tabindex="0" aria-labelledby="project5-title">
+      <img src="project2.PNG" alt="Crypto Market Insights dashboard" loading="lazy" />
+      <h3 id="project5-title">Crypto Market Insights</h3>
       <p>Monitors crypto prices, trends, and volatility using time-based visualizations for investors.</p>
-    </div>
-    <div class="project">
-      <h3>Student Evaluation Analysis</h3>
-      <img src="project6.PNG" alt="Evaluation Dashboard">
+    </article>
+    <article class="project" tabindex="0" aria-labelledby="project6-title">
+      <img src="project6.PNG" alt="Student Evaluation Analysis dashboard" loading="lazy" />
+      <h3 id="project6-title">Student Evaluation Analysis</h3>
       <p>Tracks student performance across gender, period, and assessment level to improve learning impact.</p>
-    </div>
+    </article>
   </div>
 </section>
 
-<section id="resume">
+<section id="resume" tabindex="0" aria-label="Resume section">
   <h2>Resume</h2>
-  <iframe src="https://drive.google.com/file/d/1jREpERp33GdmO1lrmThIUjtxxjcVs_oH/preview" width="100%" height="600" style="border: none;"></iframe>
-  <p><a href="https://drive.google.com/file/d/1jREpERp33GdmO1lrmThIUjtxxjcVs_oH/view?usp=sharing" target="_blank">Download my resume (PDF)</a></p>
+  <iframe 
+    src="https://drive.google.com/file/d/1jREpERp33GdmO1lrmThIUjtxxjcVs_oH/preview" 
+    title="Resume - Aravind Paraniraja" 
+    loading="lazy"
+    aria-describedby="resume-download"
+  ></iframe>
+  <p id="resume-download" style="text-align:center; margin-top: 12px;">
+    <a href="https://drive.google.com/file/d/1jREpERp33GdmO1lrmThIUjtxxjcVs_oH/view?usp=sharing" target="_blank" rel="noopener">Download my resume (PDF)</a>
+  </p>
 </section>
 
-
-
-<section id="journey">
+<section id="journey" tabindex="0" aria-label="Professional Journey section">
   <h2>My Journey</h2>
-  <p>I was born and brought up in southern Tamil Nadu and moved to Chennai in 2013 to kickstart my career in data. My journey began with MS Access development where I also gained hands-on experience in SQL, VBA, and Excel macros. These early days helped me automate repetitive tasks.</p>
-  <p>I then transitioned to QlikView development, leading migration from Pentaho dashboards. I gained deeper understanding of enterprise data environments and PostgreSQL integration.</p>
-  <p>A major milestone was working with an MIS team where I implemented a Java-based tool and Excel automation to generate PowerPoint decks for 32 countries in 15 minutes, saving 4.5 FTEs.</p>
-  <p>At Sutherland, I mastered Power BI, building enterprise dashboards. At Accenture, I automated over 250 reports across 12+ global contracts, led a team, and delivered data-driven decisions using Power Apps and Power Automate.</p>
-  <p>Visit my brand: <a href="https://aravind1089.github.io/Aegan_Analytics/" target="_blank">Aegan Analytics</a></p>
+  <p>I was born and brought up in southern Tamil Nadu and moved to Chennai in 2013 to kickstart my career in data. My journey began with MS Access development where I gained hands-on experience in SQL, VBA, and Excel macros, automating repetitive tasks.</p>
+  <p>I transitioned to QlikView development and led a migration from Pentaho dashboards. I gained deeper understanding of enterprise data environments and PostgreSQL integration.</p>
+  <p>One major milestone was implementing a Java-based tool and Excel automation to generate PowerPoint decks for 32 countries in 15 minutes, saving 4.5 FTEs.</p>
+  <p>At Sutherland, I mastered Power BI, building enterprise dashboards. At Accenture, I automated over 250 reports across 12+ global contracts, led a team, and delivered data-driven solutions using Power Apps and Power Automate.</p>
+  <p>Visit my brand: <a href="https://aravind1089.github.io/Aegan_Analytics/" target="_blank" rel="noopener">Aegan Analytics</a></p>
 </section>
 
-<section id="contact">
+<section id="contact" tabindex="0" aria-label="Contact form section">
   <h2>Contact Me</h2>
-  <form class="contact-form" action="mailto:aravind.paraniraja@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="email" name="email" placeholder="Your Email" required />
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <form class="contact-form" action="mailto:aravind.paraniraja@gmail.com" method="post" enctype="text/plain" aria-label="Contact form to reach Aravind Paraniraja">
+    <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+    <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
+    <textarea name="message" rows="5" placeholder="Your Message" required aria-required="true"></textarea>
     <button type="submit">Send Message</button>
   </form>
 </section>
 
-<a class="top-link" href="#top">Top ↑</a>
+<!-- Top button with offset scroll behavior -->
+<a href="#top" class="top-link" aria-label="Scroll to top">Top ↑</a>
+
+<!-- Optional JS for smooth scroll with offset -->
+<script>
+  document.querySelector('.top-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    const headerHeight = 140; // height of sticky header in px
+    const target = document.getElementById('top');
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+  });
+</script>
 
 <footer>
-  &copy; 2025 Aravind Paraniraja • Portfolio | <a href="https://aravind1089.github.io/Aegan_Analytics/" target="_blank">Aegan Analytics</a>
+  &copy; 2025 Aravind Paraniraja • Portfolio | <a href="https://aravind1089.github.io/Aegan_Analytics/" target="_blank" rel="noopener">Aegan Analytics</a>
 </footer>
 
 </body>
