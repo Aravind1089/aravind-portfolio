@@ -5,207 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aravind Paraniraja | Data Engineering Portfolio</title>
   <style>
-    /* Base styling */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-    * {
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-      scroll-behavior: smooth;
-    }
-    html {
-      scroll-behavior: smooth; /* Smooth scrolling */
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #fff;
-      color: #111;
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
-    }
-    a {
-      color: #222;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.25s ease;
-    }
-    a:hover, a:focus {
-      color: #007acc;
-      outline: none;
-    }
-    header {
-      background: #fff;
-      padding: 80px 20px 50px;
-      text-align: center;
-      border-bottom: 2px solid #eee;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
-      animation: fadeInDown 1s ease forwards;
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: auto; }
+    body { font-family: 'Poppins', sans-serif; background: #fff; color: #111; line-height: 1.6; }
+    a { color: #222; text-decoration: none; font-weight: 500; }
+    a:hover, a:focus { color: #007acc; outline: none; }
 
-      /* This is very important for offsetting anchor jump */
-      scroll-margin-top: 140px; /* offset for sticky header */
-    }
-    header h1 {
-      font-weight: 700;
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      color: #111;
-    }
-    header p {
-      font-weight: 300;
-      font-size: 1.2rem;
-      color: #555;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #fafafa;
-      border-bottom: 1px solid #ddd;
-      box-shadow: 0 2px 5px rgb(0 0 0 / 0.03);
-      position: sticky;
-      top: 140px; /* below header */
-      z-index: 90;
-      animation: fadeIn 1.3s ease forwards;
-      flex-wrap: wrap;
-    }
-    nav a {
-      padding: 16px 24px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #333;
-    }
-    nav a:hover,
-    nav a:focus {
-      color: #007acc;
-      border-bottom: 3px solid #007acc;
-      outline: none;
-    }
-    section {
-      max-width: 960px;
-      margin: 60px auto;
-      padding: 0 20px;
-      animation: fadeInUp 1s ease forwards;
-    }
-    h2 {
-      font-weight: 700;
-      font-size: 1.9rem;
-      color: #111;
-      margin-bottom: 24px;
-      border-bottom: 3px solid #ddd;
-      padding-bottom: 8px;
-      letter-spacing: 0.5px;
-    }
-    p, ul {
-      font-weight: 300;
-      font-size: 1.1rem;
-      color: #444;
-    }
-    ul {
-      padding-left: 20px;
-      margin-top: 12px;
-      margin-bottom: 30px;
-    }
-    li {
-      margin-bottom: 10px;
-    }
-    /* Projects grid */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 30px;
-    }
-    .project {
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .project:hover,
-    .project:focus-within {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
-      outline: none;
-    }
-    .project img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 1px 5px rgb(0 0 0 / 0.1);
-      border: 1px solid #ddd;
-      transition: filter 0.3s ease;
-    }
-    .project:hover img,
-    .project:focus-within img {
-      filter: brightness(1.1);
-    }
-    .project h3 {
-      margin-top: 14px;
-      margin-bottom: 8px;
-      color: #222;
-      font-weight: 600;
-      font-size: 1.3rem;
-    }
-    .project p {
-      font-weight: 300;
-      font-size: 1rem;
-      color: #555;
-    }
-    /* Resume iframe */
-    #resume iframe {
-      width: 100%;
-      height: 600px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgb(0 0 0 / 0.05);
-      transition: box-shadow 0.3s ease;
-    }
-    #resume iframe:hover,
-    #resume iframe:focus {
-      box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
-      outline: none;
-    }
-    /* Contact form */
-    form.contact-form {
-      max-width: 500px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    input, textarea {
-      padding: 12px 15px;
-      font-size: 1.1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      transition: border-color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      color: #111;
-    }
-    input:focus, textarea:focus {
-      border-color: #007acc;
-      outline: none;
-    }
-    button {
-      background: #007acc;
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 14px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    button:hover, button:focus {
-      background: #005fa3;
-      outline: none;
-    }
-    /* Top link button */
+    /* Header */
+    header { background: #fff; padding: 18px 10px 22px; text-align: center; border-bottom: 2px solid #eee; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    header h1 { font-weight: 700; font-size: 2rem; margin-bottom: 6px; letter-spacing: 1px; color: #111; }
+    header p { font-weight: 300; font-size: 1rem; color: #555; max-width: 480px; margin: 0 auto; }
+
+    /* Navigation */
+    nav { display: flex; justify-content: center; background: #fafafa; border-bottom: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.03); flex-wrap: wrap; }
+    nav a { padding: 16px 24px; font-weight: 600; font-size: 1rem; color: #333; }
+    nav a:hover, nav a:focus { color: #007acc; border-bottom: 3px solid #007acc; outline: none; }
+
+    /* Sections */
+    section { max-width: 960px; margin: 60px auto; padding: 0 20px; }
+    h2 { font-weight: 700; font-size: 1.9rem; margin-bottom: 24px; border-bottom: 3px solid #ddd; padding-bottom: 8px; letter-spacing: 0.5px; color: #111; }
+    p, ul { font-weight: 300; font-size: 1.1rem; color: #444; }
+    ul { padding-left: 20px; margin-top: 12px; margin-bottom: 30px; }
+    li { margin-bottom: 10px; }
+
+    /* Projects */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 30px; }
+    .project { background: #f9f9f9; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .project:hover, .project:focus-within { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); outline: none; }
+    .project img { width: 100%; border-radius: 8px; border: 1px solid #ddd; transition: filter 0.3s ease; box-shadow: 0 1px 5px rgba(0,0,0,0.1); }
+    .project:hover img, .project:focus-within img { filter: brightness(1.1); }
+    .project h3 { margin-top: 14px; margin-bottom: 8px; color: #222; font-weight: 600; font-size: 1.3rem; }
+    .project p { font-weight: 300; font-size: 1rem; color: #555; }
+
+    /* Resume */
+    #resume iframe { width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: box-shadow 0.3s ease; }
+    #resume iframe:hover, #resume iframe:focus { box-shadow: 0 8px 20px rgba(0,0,0,0.12); outline: none; }
+
+    /* Contact Form */
+    form.contact-form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 18px; }
+    input, textarea { padding: 12px 15px; font-size: 1.1rem; border: 1px solid #ccc; border-radius: 6px; font-family: 'Poppins', sans-serif; color: #111; transition: border-color 0.3s ease; }
+    input:focus, textarea:focus { border-color: #007acc; outline: none; }
+    button { background: #007acc; color: white; font-size: 1.1rem; font-weight: 700; padding: 14px 20px; border: none; border-radius: 6px; cursor: pointer; transition: background 0.3s ease; }
+    button:hover, button:focus { background: #005fa3; outline: none; }
+
+    /* Top button */
     .top-link {
       position: fixed;
       bottom: 30px;
@@ -226,6 +69,7 @@
       background: #005fa3;
       outline: none;
     }
+
     /* Footer */
     footer {
       text-align: center;
@@ -244,37 +88,98 @@
       text-decoration: underline;
       outline: none;
     }
-    /* Animations */
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
+
     /* Responsive */
     @media (max-width: 900px) {
-      .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      nav a {
-        flex-basis: 45%;
-        margin: 8px 0;
-        text-align: center;
+      .project-grid { grid-template-columns: 1fr; }
+      nav { flex-wrap: wrap; justify-content: center; }
+      nav a { flex-basis: 45%; margin: 8px 0; text-align: center; }
+      header h1 { font-size: 1.3rem; }
+      header p { font-size: 0.92rem; }
+    }
+
+    /* Chatbot styles */
+    #chatbot-container {
+      position: fixed;
+      bottom: 80px; /* Leaves space above the Top button */
+      right: 20px;
+      font-family: 'Poppins', sans-serif;
+      z-index: 9999;
+    }
+    #chatbot-toggle {
+      background: #007acc;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    #chatbot-window {
+      display: none; /* Start closed */
+      flex-direction: column;
+      width: 320px;
+      max-height: 420px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    #chatbot-header {
+      background: #007acc;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    #chatbot-messages {
+      padding: 10px;
+      flex: 1;
+      overflow-y: auto;
+      font-size: 14px;
+      max-height: 250px;
+    }
+    .chat-message {
+      margin: 8px 0;
+      line-height: 1.4em;
+    }
+    .bot {
+      text-align: left;
+      color: #111;
+    }
+    .user {
+      text-align: right;
+      color: #007acc;
+    }
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    #chatbot-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      outline: none;
+    }
+    #chatbot-input button {
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      #chatbot-window {
+        width: 90vw;
+        max-height: 70vh;
       }
     }
   </style>
@@ -381,24 +286,109 @@
   </form>
 </section>
 
-<!-- Top button with offset scroll behavior -->
 <a href="#top" class="top-link" aria-label="Scroll to top">Top ↑</a>
 
-<!-- Optional JS for smooth scroll with offset -->
-<script>
-  document.querySelector('.top-link').addEventListener('click', function(event) {
-    event.preventDefault();
-    const headerHeight = 140; // height of sticky header in px
-    const target = document.getElementById('top');
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-  });
-</script>
+<!-- Chatbot -->
+<div id="chatbot-container" aria-label="Chatbot widget">
+  <div id="chatbot-toggle" role="button" aria-pressed="false" aria-label="Open chatbot">💬</div>
+  <div id="chatbot-window" role="region" aria-live="polite" aria-hidden="true">
+    <div id="chatbot-header">🤖 Aegan Analytics & Automation</div>
+    <div id="chatbot-messages" aria-atomic="true"></div>
+    <div id="chatbot-input">
+      <input type="text" id="userInput" placeholder="Type here..." aria-label="Chat input" />
+      <button id="sendBtn" aria-label="Send message">➤</button>
+    </div>
+  </div>
+</div>
 
 <footer>
-  &copy; 2025 Aravind Paraniraja • Portfolio | <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">Aegan</a>
+  &copy; 2025 Aravind Paraniraja • Portfolio | <a href="https://aravind1089.github.io/Aegan_Analytics/" target="_blank" rel="noopener">Aegan Analytics</a>
 </footer>
+
+<script>
+const toggleBtn = document.getElementById("chatbot-toggle");
+const chatWindow = document.getElementById("chatbot-window");
+const messagesDiv = document.getElementById("chatbot-messages");
+
+const botResponses = {
+  greeting: `👋 Hi there! I'm <b>Aravind Paraniraja</b> — Power BI Developer & Data Engineer (12+ years) at <b>Aegan Analytics and Automation</b>.<br>Ask me about:<br>📊 <b>skills</b><br>🚀 <b>projects</b><br>📄 <b>resume</b><br>✉ <b>contact</b>`,
+  skills: `I specialize in:<br>• Power BI (DAX, Data Modeling, Dashboard Design)<br>• Power Automate & Power Apps<br>• MS Access, SQL, VBA, QlikView<br>• Azure Data Factory, Blob Storage<br><i>Want to see my project highlights?</i>`,
+  projects: `Here are my projects:<br>
+1️⃣ <b>Inventory Dashboard</b> – Real-time inventory tracking, turnover & stock value.<br>
+<a href="#projects" style="text-decoration:none;" title="Inventory Dashboard"><img src="project4.PNG" alt="Inventory Dashboard" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
+2️⃣ <b>Loan Portfolio Tracker</b> – Loan status, funding trends & financial health.<br>
+<a href="#projects" style="text-decoration:none;" title="Loan Portfolio Tracker"><img src="project1.PNG" alt="Loan Portfolio Tracker" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
+3️⃣ <b>HR Analytics Dashboard</b> – Attrition, salary breakdowns & HR insights.<br>
+<a href="#projects" style="text-decoration:none;" title="HR Analytics Dashboard"><img src="project3.PNG" alt="HR Analytics Dashboard" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
+4️⃣ <b>Supply Chain Analytics</b> – End-to-end flow from procurement to delivery.<br>
+<a href="#projects" style="text-decoration:none;" title="Supply Chain Analytics"><img src="project5.PNG" alt="Supply Chain Analytics" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
+5️⃣ <b>Crypto Market Insights</b> – Prices, trends & volatility visualization.<br>
+<a href="#projects" style="text-decoration:none;" title="Crypto Market Insights"><img src="project2.PNG" alt="Crypto Market Insights" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
+6️⃣ <b>Student Evaluation Analysis</b> – Performance tracking across assessments.<br>
+<a href="#projects" style="text-decoration:none;" title="Student Evaluation Analysis"><img src="project6.PNG" alt="Student Evaluation Analysis" style="width:80px; border-radius:6px; margin:6px 0;"></a><br><br>
+📂 <a href="#projects">View full portfolio section</a>`,
+  resume: `📄 <a href="https://drive.google.com/file/d/1jREpERp33GdmO1lrmThIUjtxxjcVs_oH/view?usp=sharing" target="_blank" rel="noopener">Download Resume (PDF)</a><br>🔗 <a href="https://www.linkedin.com/in/aravindparaniraja/" target="_blank" rel="noopener">LinkedIn Profile</a>`,
+  contact: `📧 <a href="mailto:aravind.paraniraja@gmail.com" rel="noopener">aravind.paraniraja@gmail.com</a><br>📞 +91-XXXXXXXXXX`,
+  default: `I’m here to help! Try typing <b>skills</b>, <b>projects</b>, <b>resume</b>, or <b>contact</b>.`
+};
+
+function addMessage(text, sender) {
+  const msg = document.createElement("div");
+  msg.classList.add("chat-message", sender);
+  msg.innerHTML = text;
+  messagesDiv.appendChild(msg);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// Flag to greet only once
+let hasOpened = false;
+
+// Toggle chatbot window open/close
+toggleBtn.onclick = () => {
+  if (chatWindow.style.display === "flex") {
+    chatWindow.style.display = "none";
+    toggleBtn.setAttribute("aria-pressed", "false");
+    chatWindow.setAttribute("aria-hidden", "true");
+  } else {
+    chatWindow.style.display = "flex";
+    toggleBtn.setAttribute("aria-pressed", "true");
+    chatWindow.setAttribute("aria-hidden", "false");
+    if (!hasOpened) {
+      addMessage(botResponses.greeting, "bot");
+      hasOpened = true;
+    }
+    // Focus input on open for accessibility
+    document.getElementById("userInput").focus();
+  }
+};
+
+// Send user message handler
+function sendUserMessage() {
+  const input = document.getElementById("userInput");
+  const userText = input.value.trim();
+  if (!userText) return;
+  addMessage(userText, "user");
+  input.value = "";
+  const lower = userText.toLowerCase();
+  if (lower.includes("skill")) {
+    addMessage(botResponses.skills, "bot");
+  } else if (lower.includes("project")) {
+    addMessage(botResponses.projects, "bot");
+  } else if (lower.includes("resume")) {
+    addMessage(botResponses.resume, "bot");
+  } else if (lower.includes("contact")) {
+    addMessage(botResponses.contact, "bot");
+  } else {
+    addMessage(botResponses.default, "bot");
+  }
+}
+
+// Event listeners for sending message
+document.getElementById("sendBtn").onclick = sendUserMessage;
+document.getElementById("userInput").addEventListener("keypress", e => {
+  if (e.key === "Enter") sendUserMessage();
+});
+</script>
 
 </body>
 </html>
-
