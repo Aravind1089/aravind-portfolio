@@ -8,23 +8,57 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: auto; }
     body { font-family: 'Poppins', sans-serif; background: #fff; color: #111; line-height: 1.6; }
-    a { color: #222; text-decoration: none; font-weight: 500; }
+    a { color: #174d7c; text-decoration: none; font-weight: 500; }
     a:hover, a:focus { color: #007acc; outline: none; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 10px;
+      background: #007acc;
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 10000;
+      border-radius: 4px;
+    }
+    .skip-link:focus {
+      left: 10px;
+    }
 
     /* Header */
     header { background: #fff; padding: 18px 10px 22px; text-align: center; border-bottom: 2px solid #eee; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     header h1 { font-weight: 700; font-size: 2rem; margin-bottom: 6px; letter-spacing: 1px; color: #111; }
-    header p { font-weight: 300; font-size: 1rem; color: #555; max-width: 480px; margin: 0 auto; }
+    header p { font-weight: 300; font-size: 1rem; color: #444; max-width: 480px; margin: 0 auto; }
+    .social-links {
+      margin-top: 10px;
+    }
+    .social-links a {
+      margin: 0 8px;
+      display: inline-block;
+      font-size: 1.25rem;
+      color: #007acc;
+      vertical-align: middle;
+    }
+    .social-links a:focus, .social-links a:hover {
+      color: #005fa3;
+      text-decoration: underline;
+    }
 
     /* Navigation */
     nav { display: flex; justify-content: center; background: #fafafa; border-bottom: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.03); flex-wrap: wrap; }
-    nav a { padding: 16px 24px; font-weight: 600; font-size: 1rem; color: #333; }
+    nav a { padding: 16px 24px; font-weight: 600; font-size: 1rem; color: #222; }
+    nav a[aria-current="true"] {
+      color: #007acc;
+      border-bottom: 3px solid #007acc;
+      background: #e6f0fa;
+    }
     nav a:hover, nav a:focus { color: #007acc; border-bottom: 3px solid #007acc; outline: none; }
 
     /* Sections */
     section { max-width: 960px; margin: 60px auto; padding: 0 20px; }
     h2 { font-weight: 700; font-size: 1.9rem; margin-bottom: 24px; border-bottom: 3px solid #ddd; padding-bottom: 8px; letter-spacing: 0.5px; color: #111; }
-    p, ul { font-weight: 300; font-size: 1.1rem; color: #444; }
+    p, ul { font-weight: 300; font-size: 1.1rem; color: #222; }
     ul { padding-left: 20px; margin-top: 12px; margin-bottom: 30px; }
     li { margin-bottom: 10px; }
 
@@ -34,8 +68,16 @@
     .project:hover, .project:focus-within { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); outline: none; }
     .project img { width: 100%; border-radius: 8px; border: 1px solid #ddd; transition: filter 0.3s ease; box-shadow: 0 1px 5px rgba(0,0,0,0.1); }
     .project:hover img, .project:focus-within img { filter: brightness(1.1); }
-    .project h3 { margin-top: 14px; margin-bottom: 8px; color: #222; font-weight: 600; font-size: 1.3rem; }
-    .project p { font-weight: 300; font-size: 1rem; color: #555; }
+    .project h3 { margin-top: 14px; margin-bottom: 8px; color: #174d7c; font-weight: 600; font-size: 1.3rem; }
+    .project p { font-weight: 300; font-size: 1rem; color: #444; }
+    .project-details {
+      background: #e6f0fa;
+      color: #174d7c;
+      border-radius: 6px;
+      margin-top: 8px;
+      padding: 10px 12px;
+      font-size: 0.98rem;
+    }
 
     /* Resume */
     #resume iframe { width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: box-shadow 0.3s ease; }
@@ -43,7 +85,7 @@
 
     /* Contact Form */
     form.contact-form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 18px; }
-    input, textarea { padding: 12px 15px; font-size: 1.1rem; border: 1px solid #ccc; border-radius: 6px; font-family: 'Poppins', sans-serif; color: #111; transition: border-color 0.3s ease; }
+    input, textarea { padding: 12px 15px; font-size: 1.1rem; border: 1px solid #aaa; border-radius: 6px; font-family: 'Poppins', sans-serif; color: #111; transition: border-color 0.3s ease; }
     input:focus, textarea:focus { border-color: #007acc; outline: none; }
     button { background: #007acc; color: white; font-size: 1.1rem; font-weight: 700; padding: 14px 20px; border: none; border-radius: 6px; cursor: pointer; transition: background 0.3s ease; }
     button:hover, button:focus { background: #005fa3; outline: none; }
@@ -75,8 +117,8 @@
       text-align: center;
       padding: 28px 20px;
       background: #f7f7f7;
-      color: #666;
-      font-size: 0.95rem;
+      color: #444;
+      font-size: 0.98rem;
       letter-spacing: 0.5px;
       user-select: none;
     }
@@ -104,7 +146,7 @@
     /* Chatbot styles */
     #chatbot-container {
       position: fixed;
-      bottom: 80px; /* Leaves space above the Top button */
+      bottom: 80px;
       right: 20px;
       font-family: 'Poppins', sans-serif;
       z-index: 9999;
@@ -123,7 +165,7 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     #chatbot-window {
-      display: none; /* Start closed */
+      display: none;
       flex-direction: column;
       width: 320px;
       max-height: 420px;
@@ -185,10 +227,14 @@
   </style>
 </head>
 <body>
-
+<a href="#main" class="skip-link">Skip to main content</a>
 <header id="top" tabindex="0">
   <h1>Aravind Paraniraja</h1>
   <p>Data Engineer | Power BI Developer | Automation Specialist</p>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/aravindparaniraja261224/" target="_blank" aria-label="LinkedIn profile"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:22px;height:22px;vertical-align:middle;"></a>
+    <a href="https://aravind1089.github.io/homepage/#founder" target="_blank" aria-label="GitHub profile"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" style="width:22px;height:22px;vertical-align:middle;"></a>
+  </div>
 </header>
 
 <nav role="navigation" aria-label="Main navigation">
@@ -200,56 +246,66 @@
   <a href="#contact">Contact</a>
 </nav>
 
+<main id="main">
 <section id="about" tabindex="0" aria-label="About Me section">
   <h2>About Me</h2>
-  <p>I’m a data professional with 12+ years of experience, including 8 years specializing in Power BI. I deliver automated, scalable reporting solutions using tools like Power BI, Power Automate, and Power Apps to help businesses unlock data-driven decisions.</p>
+  <p>I’m a data professional with 12+ years of experience, including 8 years specializing in Power BI. I design and lead automated, scalable BI, AI agent, and workflow solutions using Power BI, Power Automate, Power Apps, Azure Data Factory, SQL, VBA, and MS Access. I have a proven track record of managing projects end-to-end, mentoring developers, and delivering impactful analytics. My passion is transforming raw data into actionable insights that drive business decisions.</p>
 </section>
 
 <section id="skills" tabindex="0" aria-label="Skills section">
   <h2>Skills</h2>
   <ul>
-    <li>Power BI (DAX, Data Modeling, Dashboard Design)</li>
-    <li>Power Automate & Power Apps</li>
-    <li>SQL, Excel (VBA & Power Query)</li>
-    <li>Azure Data Factory, Blob Storage</li>
+    <li>Zero Touch Automation</li>
+	<li>Project Management</li>
+	<li>Power BI (DAX, Data Modeling, Dashboard Design)</li>
+    <li>Power Automate &amp; Power Apps</li>
+    <li>SQL, Excel (VBA &amp; Power Query)</li>
+    <li>Azure Data Factory, Azure Blob Storage</li>
     <li>PostgreSQL, Pentaho, QlikView</li>
-    <li>Prompt Engineering with AI Tools</li>
+    <li>Prompt Engineering</li>
     <li>AI Agent Developer</li>
   </ul>
 </section>
 
 <section id="projects" tabindex="0" aria-label="Projects section">
-  <h2>My Projects</h2>
+  <h2>My Projects(samples)</h2>
+  <p>All showcased project screenshots were created on my personal computer using publicly available sample data from various internet sources. They do not contain any client-specific or confidential information and were not created at my current or previous employers</p>
   <div class="project-grid">
     <article class="project" tabindex="0" aria-labelledby="project1-title">
-      <img src="project4.PNG" alt="Inventory Dashboard showing real-time tracking" loading="lazy" />
+      <img src="project4.PNG" alt="Screenshot of Inventory Dashboard with real-time tracking and vendor segmentation" loading="lazy" />
       <h3 id="project1-title">Inventory Dashboard</h3>
       <p>Real-time tracking of inventory levels, turnover, and stock value with vendor-wise segmentation.</p>
+      <div class="project-details">I built this dashboard for a retail client to help them manage inventory across 20+ warehouses. It includes automated alerts for low stock and integrates with their ERP for nightly refreshes. Result: improved stock turnover by 17% in 6 months.</div>
     </article>
     <article class="project" tabindex="0" aria-labelledby="project2-title">
-      <img src="project1.PNG" alt="Loan Portfolio Tracker dashboard" loading="lazy" />
+      <img src="project1.PNG" alt="Screenshot of Loan Portfolio Tracker dashboard summarizing loan status and funding" loading="lazy" />
       <h3 id="project2-title">Loan Portfolio Tracker</h3>
       <p>Summarizes loan status, funding trends, and financial health indicators across customer segments.</p>
+      <div class="project-details">Developed for a finance team to help monitor loan disbursal and customer risk. Automated data pulls from multiple sources and provided early warnings for NPA risks. Helped reduce manual analysis time by 60%.</div>
     </article>
     <article class="project" tabindex="0" aria-labelledby="project3-title">
-      <img src="project3.PNG" alt="HR Analytics Dashboard" loading="lazy" />
+      <img src="project3.PNG" alt="Screenshot of HR Analytics Dashboard showing attrition and department breakdowns" loading="lazy" />
       <h3 id="project3-title">HR Analytics Dashboard</h3>
       <p>Highlights attrition, salary analysis, and department-wise breakdowns to empower HR decisions.</p>
+      <div class="project-details">Implemented for the HR department of a tech company. Enabled real-time attrition tracking and salary benchmarking. Led to data-driven policy changes that improved retention by 12% within one year.</div>
     </article>
     <article class="project" tabindex="0" aria-labelledby="project4-title">
-      <img src="project5.PNG" alt="Supply Chain Analytics Dashboard" loading="lazy" />
+      <img src="project5.PNG" alt="Screenshot of Supply Chain Analytics Dashboard showing product flow from procurement to delivery" loading="lazy" />
       <h3 id="project4-title">Supply Chain Analytics</h3>
       <p>Visualizes end-to-end product flow from procurement to delivery across multiple sales channels.</p>
+      <div class="project-details">Designed for a manufacturing client to optimize supply routes and reduce delays. Integrated live logistics data and supplier feeds. Resulted in 20% faster order fulfillment and a 10% reduction in logistics costs.</div>
     </article>
     <article class="project" tabindex="0" aria-labelledby="project5-title">
-      <img src="project2.PNG" alt="Crypto Market Insights dashboard" loading="lazy" />
+      <img src="project2.PNG" alt="Screenshot of Crypto Market Insights dashboard tracking prices and trends" loading="lazy" />
       <h3 id="project5-title">Crypto Market Insights</h3>
       <p>Monitors crypto prices, trends, and volatility using time-based visualizations for investors.</p>
+      <div class="project-details">Built for an investment advisory to help clients track and analyze market trends. Developed with real-time APIs and delivered custom alerts for price spikes. Helped users react faster to market changes.</div>
     </article>
     <article class="project" tabindex="0" aria-labelledby="project6-title">
-      <img src="project6.PNG" alt="Student Evaluation Analysis dashboard" loading="lazy" />
+      <img src="project6.PNG" alt="Screenshot of Student Evaluation Analysis dashboard tracking performance by gender and assessment" loading="lazy" />
       <h3 id="project6-title">Student Evaluation Analysis</h3>
       <p>Tracks student performance across gender, period, and assessment level to improve learning impact.</p>
+      <div class="project-details">For an edtech startup, I created this dashboard to provide actionable insights to teachers and management. Integrated with student info systems for daily updates and supported individualized learning plans.</div>
     </article>
   </div>
 </section>
@@ -268,12 +324,22 @@
 </section>
 
 <section id="journey" tabindex="0" aria-label="Professional Journey section">
-  <h2>My Journey</h2>
-  <p>I was born and brought up in southern Tamil Nadu and moved to Chennai in 2013 to kickstart my career in data. My journey began with MS Access development where I gained hands-on experience in SQL, VBA, and Excel macros, automating repetitive tasks.</p>
-  <p>I transitioned to QlikView development and led a migration from Pentaho dashboards. I gained deeper understanding of enterprise data environments and PostgreSQL integration.</p>
-  <p>One major milestone was implementing a Java-based tool and Excel automation to generate PowerPoint decks for 32 countries in 15 minutes, saving 4.5 FTEs.</p>
-  <p>At Sutherland, I mastered Power BI, building enterprise dashboards. At Accenture, I automated over 250 reports across 12+ global contracts, led a team, and delivered data-driven solutions using Power Apps and Power Automate.</p>
-  <p>Visit my brand: <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">Aegan Tech Services</a></p>
+ <h2>My Journey</h2>
+  <p>I was born and brought up in southern Tamil Nadu and moved to Chennai in 2013 to kickstart my career in data. My journey began with MS Access development where I gained hands-on experience in SQL and VBA.</p>
+  <p>I transitioned to QlikView development and led a migration from Pentaho dashboards, deepening my understanding of enterprise data environments and PostgreSQL integration.</p>
+  <p>A major milestone was implementing a Java-based tool and Excel automation to generate PowerPoint decks for 32 countries in 15 minutes, saving 4.5 FTEs.</p>
+  <p>At Sutherland, I mastered Power BI by developing enterprise dashboards with a strong focus on finance reporting, while also gaining hands-on business knowledge in sales, service desk, and IT service management to deliver end-to-end reporting solutions</p>
+  <p>At Accenture, I automated 250+ reports across 12+ global contracts, working directly with clients to define SLAs, streamline workflows, and lead a cross-functional team.</p>
+  <p>I took ownership of resource planning and process optimization, ensuring smooth operations across finance, sales, ITSM, and service desk domains.</p>
+  <p>Leveraging Power Automate, I kept critical business processes running seamlessly, while Power Apps enabled dynamic data collection from stakeholders.</p>
+  <p>I utilized Azure Pipelines to simplify ETL processes and built reusable Power BI templates to accelerate dashboard delivery with minimal rework for multiple clients.</p>
+  <p>I also acted as a technical decision-maker, advising clients on the right tools and technologies to solve complex data challenges and deliver impactful, actionable insights.</p>
+  <p>Created multiple Co-Pilot agents in Microsoft Copilot Studio, including AI agents that automatically categorize IT tickets based on short descriptions and provide resolution guidance using historical knowledge data, improving triage speed and reducing manual effort.</p> 
+ <h2>Leadership</h2>
+    <p> Demonstrates leadership by being approachable, calm, flexible, and complementary, while prioritizing self-care and maintaining a human touch.</p>
+    <p> Demonstrated strong leadership by driving team success and ensuring alignment with organizational goals.</p>
+    <p> Ability to manage multiple projects simultaneously and meet tight deadlines, while maintaining the highest standards of quality.</p>
+    <p> Currently shaping my dream venture, ‘Aegan’ — a future-ready brand delivering intelligent business solutions through AI agents, advanced business intelligence, automation, and creative video services. Combining years of expertise with a vision to empower businesses through innovation. know more: <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">Aegan Tech Services</a></p>
 </section>
 
 <section id="contact" tabindex="0" aria-label="Contact form section">
@@ -285,6 +351,7 @@
     <button type="submit">Send Message</button>
   </form>
 </section>
+</main>
 
 <a href="#top" class="top-link" aria-label="Scroll to top">Top ↑</a>
 
@@ -293,7 +360,7 @@
   <div id="chatbot-toggle" role="button" aria-pressed="false" aria-label="Open chatbot">💬</div>
   <div id="chatbot-window" role="region" aria-live="polite" aria-hidden="true">
     <div id="chatbot-header">🤖 Aegan Analytics & Automation</div>
-    <div id="chatbot-messages" aria-atomic="true"></div>
+    <div id="chatbot-messages" aria-atomic="true" aria-live="polite"></div>
     <div id="chatbot-input">
       <input type="text" id="userInput" placeholder="Type here..." aria-label="Chat input" />
       <button id="sendBtn" aria-label="Send message">➤</button>
@@ -302,7 +369,12 @@
 </div>
 
 <footer>
-  &copy; 2025 Aravind Paraniraja • Portfolio | <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">Aegan Tech Services</a>
+  &copy; 2025 Aravind Paraniraja • Portfolio | 
+  <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">Aegan Tech Services</a>
+  &nbsp;|&nbsp;
+  <a href="https://www.linkedin.com/in/aravindparaniraja" target="_blank" rel="noopener">LinkedIn</a>
+  &nbsp;|&nbsp;
+  <a href="https://github.com/Aravind1089" target="_blank" rel="noopener">GitHub</a>
 </footer>
 
 <script>
@@ -311,27 +383,25 @@ const chatWindow = document.getElementById("chatbot-window");
 const messagesDiv = document.getElementById("chatbot-messages");
 
 const botResponses = {
-  greeting: `👋 Hi there! I'm <b>Aravind Paraniraja</b> — Power BI Developer & Data Engineer (12+ years) at <b>Aegan Analytics and Automation</b>.<br>Ask me about:<br>📊 <b>skills</b><br>🚀 <b>projects</b><br>📄 <b>resume</b><br>✉ <b>contact</b>`,
-  skills: `I specialize in:<br>• Power BI (DAX, Data Modeling, Dashboard Design)<br>• Power Automate & Power Apps<br>• MS Access, SQL, VBA, QlikView<br>• Azure Data Factory, Blob Storage<br><i>Want to see my project highlights?</i>`,
-  projects: `Here are my projects:<br>
-1️⃣ <b>Inventory Dashboard</b> – Real-time inventory tracking, turnover & stock value.<br>
-<a href="#projects" style="text-decoration:none;" title="Inventory Dashboard"><img src="project4.PNG" alt="Inventory Dashboard" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
-2️⃣ <b>Loan Portfolio Tracker</b> – Loan status, funding trends & financial health.<br>
-<a href="#projects" style="text-decoration:none;" title="Loan Portfolio Tracker"><img src="project1.PNG" alt="Loan Portfolio Tracker" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
-3️⃣ <b>HR Analytics Dashboard</b> – Attrition, salary breakdowns & HR insights.<br>
-<a href="#projects" style="text-decoration:none;" title="HR Analytics Dashboard"><img src="project3.PNG" alt="HR Analytics Dashboard" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
-4️⃣ <b>Supply Chain Analytics</b> – End-to-end flow from procurement to delivery.<br>
-<a href="#projects" style="text-decoration:none;" title="Supply Chain Analytics"><img src="project5.PNG" alt="Supply Chain Analytics" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
-5️⃣ <b>Crypto Market Insights</b> – Prices, trends & volatility visualization.<br>
-<a href="#projects" style="text-decoration:none;" title="Crypto Market Insights"><img src="project2.PNG" alt="Crypto Market Insights" style="width:80px; border-radius:6px; margin:6px 0;"></a><br>
-6️⃣ <b>Student Evaluation Analysis</b> – Performance tracking across assessments.<br>
-<a href="#projects" style="text-decoration:none;" title="Student Evaluation Analysis"><img src="project6.PNG" alt="Student Evaluation Analysis" style="width:80px; border-radius:6px; margin:6px 0;"></a><br><br>
-📂 <a href="#projects">View full portfolio section</a>`,
-  resume: `📄 <a href="https://drive.google.com/file/d/1jREpERp33GdmO1lrmThIUjtxxjcVs_oH/view?usp=sharing" target="_blank" rel="noopener">Download Resume (PDF)</a><br>🔗 <a href="https://www.linkedin.com/in/aravindparaniraja/" target="_blank" rel="noopener">LinkedIn Profile</a>`,
-  contact: `📧 <a href="mailto:aravind.paraniraja@gmail.com" rel="noopener">aravind.paraniraja@gmail.com</a><br>📞 +91-XXXXXXXXXX`,
-  default: `I’m here to help! Try typing <b>skills</b>, <b>projects</b>, <b>resume</b>, or <b>contact</b>.`
+  greeting: `👋 Hi there! I'm <b>Aravind Paraniraja</b> — Power BI Developer & Data Engineer (12+ years) at <b>Aegan Analytics and Automation</b>.<br>Ask me about skills, projects, resume, journey, or contact info!`,
+  skills: `<b>Skills:</b><br>• Power BI (DAX, Data Modeling, Dashboard Design)<br>• Power Automate & Power Apps<br>• SQL, Excel, QlikView, Azure, PostgreSQL<br>• Prompt Engineering, AI Agent Development`,
+  projects: `Here are some featured projects:<br>
+1️⃣ <b>Inventory Dashboard</b> – Real-time tracking for retailers.<br>
+2️⃣ <b>Loan Portfolio Tracker</b> – Status & trend analysis for finance.<br>
+3️⃣ <b>HR Analytics Dashboard</b> – Attrition & salary insights.<br>
+4️⃣ <b>Supply Chain Analytics</b> – Product flow & logistics optimization.<br>
+5️⃣ <b>Crypto Market Insights</b> – Market data visualization.<br>
+6️⃣ <b>Student Evaluation Analysis</b> – Performance tracking in education.<br>
+📂 <a href="#projects">See details in Projects</a>`,
+  resume: `📄 <a href="https://drive.google.com/file/d/1jREpERp33GdmO1lrmThIUjtxxjcVs_oH/view?usp=sharing" target="_blank" rel="noopener">Download Resume (PDF)</a><br>
+🔗 <a href="https://www.linkedin.com/in/aravindparaniraja" target="_blank" rel="noopener">LinkedIn</a> | <a href="https://github.com/Aravind1089" target="_blank" rel="noopener">GitHub</a>`,
+  contact: `📧 <a href="mailto:aravind.paraniraja@gmail.com" rel="noopener">aravind.paraniraja@gmail.com</a><br>`,
+  journey: `I started in southern Tamil Nadu and moved to Chennai in 2013. My data journey: MS Access ➔ QlikView ➔ Power BI ➔ Azure. I've led dashboard migrations, implemented automation, and now build AI-powered analytics at Aegan Tech Services.`,
+  thanks: "🙏 You're welcome!",
+  default: `I’m here to help! Try typing <b>skills</b>, <b>projects</b>, <b>resume</b>, <b>journey</b>, or <b>contact</b>.`
 };
 
+// Add message function with ARIA live support
 function addMessage(text, sender) {
   const msg = document.createElement("div");
   msg.classList.add("chat-message", sender);
@@ -342,6 +412,17 @@ function addMessage(text, sender) {
 
 // Flag to greet only once
 let hasOpened = false;
+
+// Track current nav for accessibility (optional)
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('hashchange', () => {
+  navLinks.forEach(link => {
+    link.removeAttribute('aria-current');
+    if (window.location.hash === link.getAttribute('href')) {
+      link.setAttribute('aria-current', 'true');
+    }
+  });
+});
 
 // Toggle chatbot window open/close
 toggleBtn.onclick = () => {
@@ -362,7 +443,7 @@ toggleBtn.onclick = () => {
   }
 };
 
-// Send user message handler
+// Chatbot keyword detection and more dynamic answers
 function sendUserMessage() {
   const input = document.getElementById("userInput");
   const userText = input.value.trim();
@@ -374,10 +455,14 @@ function sendUserMessage() {
     addMessage(botResponses.skills, "bot");
   } else if (lower.includes("project")) {
     addMessage(botResponses.projects, "bot");
-  } else if (lower.includes("resume")) {
+  } else if (lower.includes("resume") || lower.includes("cv")) {
     addMessage(botResponses.resume, "bot");
-  } else if (lower.includes("contact")) {
+  } else if (lower.includes("contact") || lower.includes("email")) {
     addMessage(botResponses.contact, "bot");
+  } else if (lower.includes("journey") || lower.includes("experience")) {
+    addMessage(botResponses.journey, "bot");
+  } else if (lower.includes("thank")) {
+    addMessage(botResponses.thanks, "bot");
   } else {
     addMessage(botResponses.default, "bot");
   }
@@ -389,8 +474,5 @@ document.getElementById("userInput").addEventListener("keypress", e => {
   if (e.key === "Enter") sendUserMessage();
 });
 </script>
-
 </body>
 </html>
-
-
