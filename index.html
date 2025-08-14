@@ -1,75 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aravind Paraniraja | Data Engineering Portfolio</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: auto; }
-    body { font-family: 'Poppins', sans-serif; background: #fff; color: #111; line-height: 1.6; }
-    a { color: #174d7c; text-decoration: none; font-weight: 500; }
-    a:hover, a:focus { color: #007acc; outline: none; }
+  
+  <!-- Fonts & Animation Library -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
 
+  <style>
+    :root {
+      --primary: #007acc;
+      --primary-dark: #005fa3;
+      --light-bg: #ffffff;
+      --light-text: #111;
+      --light-card: #f9f9f9;
+      --dark-bg: #121214;
+      --dark-card: #1c1b29;
+      --dark-text: #e0e0e0;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+    
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    
+    a {
+      color: #174d7c;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    a:hover, a:focus {
+      color: var(--primary);
+      outline: none;
+    }
+    
     /* Skip link */
     .skip-link {
       position: absolute;
       left: -999px;
       top: 10px;
-      background: #007acc;
+      background: var(--primary);
       color: #fff;
       padding: 8px 16px;
       z-index: 10000;
       border-radius: 4px;
     }
-    .skip-link:focus {
-      left: 10px;
-    }
-
+    .skip-link:focus { left: 10px; }
+    
     /* Header */
-    header { background: #fff; padding: 18px 10px 22px; text-align: center; border-bottom: 2px solid #eee; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    header h1 { font-weight: 700; font-size: 2rem; margin-bottom: 6px; letter-spacing: 1px; color: #111; }
-    header p { font-weight: 300; font-size: 1rem; color: #444; max-width: 480px; margin: 0 auto; }
+    header {
+      background: var(--light-bg);
+      padding: 18px 10px 22px;
+      text-align: center;
+      border-bottom: 2px solid #eee;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+    
+    body.dark header {
+      background: var(--dark-card);
+      border-bottom-color: #333;
+    }
+    
+    header h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+      color: var(--light-text);
+    }
+    
+    body.dark header h1 { color: var(--dark-text); }
+    
+    header p {
+      font-weight: 300;
+      font-size: 1rem;
+      color: #444;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    
+    body.dark header p { color: #bbb; }
+    
     .social-links {
       margin-top: 10px;
     }
+    
     .social-links a {
       margin: 0 8px;
       display: inline-block;
       font-size: 1.25rem;
-      color: #007acc;
+      color: var(--primary);
       vertical-align: middle;
     }
-    .social-links a:focus, .social-links a:hover {
-      color: #005fa3;
-      text-decoration: underline;
-    }
-
+    
     /* Navigation */
-    nav { display: flex; justify-content: center; background: #fafafa; border-bottom: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.03); flex-wrap: wrap; }
-    nav a { padding: 16px 24px; font-weight: 600; font-size: 1rem; color: #222; }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #fafafa;
+      border-bottom: 1px solid #ddd;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+    
+    body.dark nav {
+      background: var(--dark-card);
+      border-bottom-color: #333;
+    }
+    
+    nav a {
+      padding: 16px 24px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #222;
+      transition: color 0.3s ease, background 0.3s ease;
+    }
+    
+    body.dark nav a { color: var(--dark-text); }
+    
     nav a[aria-current="true"] {
-      color: #007acc;
-      border-bottom: 3px solid #007acc;
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
       background: #e6f0fa;
     }
-    nav a:hover, nav a:focus { color: #007acc; border-bottom: 3px solid #007acc; outline: none; }
-
+    
+    body.dark nav a[aria-current="true"] {
+      background: rgba(0, 122, 204, 0.1);
+    }
+    
+    nav a:hover, nav a:focus {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+      outline: none;
+    }
+    
     /* Sections */
-    section { max-width: 960px; margin: 60px auto; padding: 0 20px; }
-    h2 { font-weight: 700; font-size: 1.9rem; margin-bottom: 24px; border-bottom: 3px solid #ddd; padding-bottom: 8px; letter-spacing: 0.5px; color: #111; }
-    p, ul { font-weight: 300; font-size: 1.1rem; color: #222; }
-    ul { padding-left: 20px; margin-top: 12px; margin-bottom: 30px; }
+    section {
+      max-width: 960px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    
+    h2 {
+      font-weight: 700;
+      font-size: 1.9rem;
+      margin-bottom: 24px;
+      border-bottom: 3px solid #ddd;
+      padding-bottom: 8px;
+      letter-spacing: 0.5px;
+      color: var(--light-text);
+    }
+    
+    body.dark h2 {
+      color: var(--dark-text);
+      border-bottom-color: #444;
+    }
+    
+    p, ul {
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: #222;
+    }
+    
+    body.dark p, body.dark ul { color: var(--dark-text); }
+    
+    ul {
+      padding-left: 20px;
+      margin-top: 12px;
+      margin-bottom: 30px;
+    }
+    
     li { margin-bottom: 10px; }
-
+    
     /* Projects */
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 30px; }
-    .project { background: #f9f9f9; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .project:hover, .project:focus-within { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); outline: none; }
-    .project img { width: 100%; border-radius: 8px; border: 1px solid #ddd; transition: filter 0.3s ease; box-shadow: 0 1px 5px rgba(0,0,0,0.1); }
-    .project:hover img, .project:focus-within img { filter: brightness(1.1); }
-    .project h3 { margin-top: 14px; margin-bottom: 8px; color: #174d7c; font-weight: 600; font-size: 1.3rem; }
-    .project p { font-weight: 300; font-size: 1rem; color: #444; }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 30px;
+    }
+    
+    .project {
+      background: var(--light-card);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    body.dark .project {
+      background: var(--dark-card);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .project:hover, .project:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      outline: none;
+    }
+    
+    body.dark .project:hover, body.dark .project:focus-within {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    
+    .project img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      transition: filter 0.3s ease;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+    
+    body.dark .project img { border-color: #333; }
+    
+    .project:hover img, .project:focus-within img {
+      filter: brightness(1.1);
+    }
+    
+    .project h3 {
+      margin-top: 14px;
+      margin-bottom: 8px;
+      color: #174d7c;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    
+    body.dark .project h3 { color: #66b3ff; }
+    
+    .project p {
+      font-weight: 300;
+      font-size: 1rem;
+      color: #444;
+    }
+    
+    body.dark .project p { color: #bbb; }
+    
     .project-details {
       background: #e6f0fa;
       color: #174d7c;
@@ -78,24 +261,143 @@
       padding: 10px 12px;
       font-size: 0.98rem;
     }
-
+    
+    body.dark .project-details {
+      background: rgba(102, 179, 255, 0.1);
+      color: #66b3ff;
+    }
+    
     /* Resume */
-    #resume iframe { width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: box-shadow 0.3s ease; }
-    #resume iframe:hover, #resume iframe:focus { box-shadow: 0 8px 20px rgba(0,0,0,0.12); outline: none; }
-
+    #resume iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+    
+    body.dark #resume iframe {
+      border-color: #333;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    
+    #resume iframe:hover, #resume iframe:focus {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      outline: none;
+    }
+    
     /* Contact Form */
-    form.contact-form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 18px; }
-    input, textarea { padding: 12px 15px; font-size: 1.1rem; border: 1px solid #aaa; border-radius: 6px; font-family: 'Poppins', sans-serif; color: #111; transition: border-color 0.3s ease; }
-    input:focus, textarea:focus { border-color: #007acc; outline: none; }
-    button { background: #007acc; color: white; font-size: 1.1rem; font-weight: 700; padding: 14px 20px; border: none; border-radius: 6px; cursor: pointer; transition: background 0.3s ease; }
-    button:hover, button:focus { background: #005fa3; outline: none; }
-
+    form.contact-form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    
+    input, textarea {
+      padding: 12px 15px;
+      font-size: 1.1rem;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      font-family: 'Poppins', sans-serif;
+      color: var(--light-text);
+      background: var(--light-bg);
+      transition: border-color 0.3s ease;
+    }
+    
+    body.dark input, body.dark textarea {
+      background: var(--dark-card);
+      color: var(--dark-text);
+      border-color: #555;
+    }
+    
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    
+    button {
+      position: relative;
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      overflow: hidden;
+    }
+    
+    button:hover:not(:disabled) {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .btn-loading {
+      display: none;
+    }
+    
+    /* Form message styling */
+    #form-message {
+      font-weight: 500;
+      border-radius: 6px;
+      padding: 12px;
+      text-align: center;
+    }
+    
+    #form-message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    body.dark #form-message.success {
+      background: rgba(21, 87, 36, 0.2);
+      color: #90ee90;
+      border-color: rgba(21, 87, 36, 0.3);
+    }
+    
+    #form-message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    body.dark #form-message.error {
+      background: rgba(114, 28, 36, 0.2);
+      color: #ff9999;
+      border-color: rgba(114, 28, 36, 0.3);
+    }
+    
+    /* Loading animation */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .btn-loading::before {
+      content: "⏳";
+      display: inline-block;
+      margin-right: 5px;
+      animation: spin 1s linear infinite;
+    }
+    
     /* Top button */
     .top-link {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: #007acc;
+      background: var(--primary);
       color: white;
       padding: 12px 16px;
       font-weight: 700;
@@ -106,12 +408,35 @@
       transition: opacity 0.3s ease, background 0.3s ease;
       z-index: 1000;
     }
+    
     .top-link:hover, .top-link:focus {
       opacity: 1;
-      background: #005fa3;
+      background: var(--primary-dark);
       outline: none;
     }
-
+    
+    /* Theme Toggle */
+    #theme-toggle {
+      position: fixed;
+      left: 20px;
+      bottom: 30px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0,122,204,0.3);
+      transition: background 0.3s ease;
+      z-index: 1000;
+    }
+    
+    #theme-toggle:hover, #theme-toggle:focus {
+      background: var(--primary-dark);
+      outline: none;
+    }
+    
     /* Footer */
     footer {
       text-align: center;
@@ -121,16 +446,155 @@
       font-size: 0.98rem;
       letter-spacing: 0.5px;
       user-select: none;
+      transition: background 0.4s ease, color 0.4s ease;
     }
+    
+    body.dark footer {
+      background: var(--dark-card);
+      color: var(--dark-text);
+    }
+    
     footer a {
-      color: #007acc;
+      color: var(--primary);
       font-weight: 600;
     }
+    
     footer a:hover, footer a:focus {
       text-decoration: underline;
       outline: none;
     }
-
+    
+    /* Chatbot styles */
+    #chatbot-container {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      font-family: 'Poppins', sans-serif;
+      z-index: 9999;
+    }
+    
+    #chatbot-toggle {
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,122,204,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+    }
+    
+    #chatbot-toggle:hover, #chatbot-toggle:focus {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,122,204,0.6);
+      outline: none;
+    }
+    
+    #chatbot-window {
+      display: none;
+      flex-direction: column;
+      width: 320px;
+      max-height: 420px;
+      background: var(--light-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      animation: slideUp 0.3s ease-out;
+    }
+    
+    body.dark #chatbot-window {
+      background: var(--dark-card);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    #chatbot-header {
+      background: var(--primary);
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    #chatbot-messages {
+      padding: 10px;
+      flex: 1;
+      overflow-y: auto;
+      font-size: 14px;
+      max-height: 250px;
+      background: var(--light-bg);
+    }
+    
+    body.dark #chatbot-messages {
+      background: var(--dark-card);
+    }
+    
+    .chat-message {
+      margin: 8px 0;
+      line-height: 1.4em;
+    }
+    
+    .bot {
+      text-align: left;
+      color: var(--light-text);
+    }
+    
+    body.dark .bot { color: var(--dark-text); }
+    
+    .user {
+      text-align: right;
+      color: var(--primary);
+      font-weight: 500;
+    }
+    
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+      background: var(--light-bg);
+    }
+    
+    body.dark #chatbot-input {
+      border-top-color: #333;
+      background: var(--dark-card);
+    }
+    
+    #chatbot-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      outline: none;
+      background: transparent;
+      color: var(--light-text);
+    }
+    
+    body.dark #chatbot-input input { color: var(--dark-text); }
+    
+    #chatbot-input button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    #chatbot-input button:hover {
+      background: var(--primary-dark);
+    }
+    
     /* Responsive */
     @media (max-width: 900px) {
       .project-grid { grid-template-columns: repeat(2, 1fr); }
@@ -141,99 +605,32 @@
       nav a { flex-basis: 45%; margin: 8px 0; text-align: center; }
       header h1 { font-size: 1.3rem; }
       header p { font-size: 0.92rem; }
-    }
-
-    /* Chatbot styles */
-    #chatbot-container {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      font-family: 'Poppins', sans-serif;
-      z-index: 9999;
-    }
-    #chatbot-toggle {
-      background: #007acc;
-      color: white;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    #chatbot-window {
-      display: none;
-      flex-direction: column;
-      width: 320px;
-      max-height: 420px;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    #chatbot-header {
-      background: #007acc;
-      color: white;
-      padding: 12px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    #chatbot-messages {
-      padding: 10px;
-      flex: 1;
-      overflow-y: auto;
-      font-size: 14px;
-      max-height: 250px;
-    }
-    .chat-message {
-      margin: 8px 0;
-      line-height: 1.4em;
-    }
-    .bot {
-      text-align: left;
-      color: #111;
-    }
-    .user {
-      text-align: right;
-      color: #007acc;
-    }
-    #chatbot-input {
-      display: flex;
-      border-top: 1px solid #ddd;
-    }
-    #chatbot-input input {
-      flex: 1;
-      border: none;
-      padding: 10px;
-      font-size: 14px;
-      outline: none;
-    }
-    #chatbot-input button {
-      background: #007acc;
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      cursor: pointer;
-    }
-    @media (max-width: 600px) {
       #chatbot-window {
         width: 90vw;
         max-height: 70vh;
+        right: 5vw;
+      }
+      #theme-toggle, .top-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
+
 <a href="#main" class="skip-link">Skip to main content</a>
-<header id="top" tabindex="0">
+
+<header id="top" tabindex="0" data-aos="fade-down">
   <h1>Aravind Paraniraja</h1>
   <p>Data Engineer | Power BI Developer | Automation Specialist</p>
   <div class="social-links">
-    <a href="https://www.linkedin.com/in/aravindparaniraja261224/" target="_blank" aria-label="LinkedIn profile"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:22px;height:22px;vertical-align:middle;"></a>
-    <a href="https://aravind1089.github.io/homepage/#founder" target="_blank" aria-label="GitHub profile"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" style="width:22px;height:22px;vertical-align:middle;"></a>
+    <a href="https://www.linkedin.com/in/aravindparaniraja261224/" target="_blank" aria-label="LinkedIn profile">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:22px;height:22px;vertical-align:middle;">
+    </a>
+    <a href="https://aravind1089.github.io/homepage/#founder" target="_blank" aria-label="GitHub profile">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" style="width:22px;height:22px;vertical-align:middle;">
+    </a>
   </div>
 </header>
 
@@ -247,19 +644,19 @@
 </nav>
 
 <main id="main">
-<section id="about" tabindex="0" aria-label="About Me section">
+<section id="about" tabindex="0" aria-label="About Me section" data-aos="fade-up">
   <h2>About Me</h2>
-  <p>I’m a data professional with 12+ years of experience, including 8 years specializing in Power BI. I design and lead automated, scalable BI, AI agent, and workflow solutions using Power BI, Power Automate, Power Apps, Azure Data Factory, SQL, VBA, and MS Access. I have a proven track record of managing projects end-to-end, mentoring developers, and delivering impactful analytics. My passion is transforming raw data into actionable insights that drive business decisions.</p>
+  <p>I'm a data professional with 12+ years of experience, including 8 years specializing in Power BI. I design and lead automated, scalable BI, AI agent, and workflow solutions using Power BI, Power Automate, Power Apps, Azure Data Factory, SQL, VBA, and MS Access. I have a proven track record of managing projects end-to-end, mentoring developers, and delivering impactful analytics. My passion is transforming raw data into actionable insights that drive business decisions.</p>
 </section>
 
-<section id="skills" tabindex="0" aria-label="Skills section">
+<section id="skills" tabindex="0" aria-label="Skills section" data-aos="fade-right">
   <h2>Skills</h2>
   <ul>
     <li>Zero Touch Automation</li>
-	<li>Project Management</li>
-	<li>Power BI (DAX, Data Modeling, Dashboard Design)</li>
-    <li>Power Automate &amp; Power Apps</li>
-    <li>SQL, Excel (VBA &amp; Power Query)</li>
+    <li>Project Management</li>
+    <li>Power BI (DAX, Data Modeling, Dashboard Design)</li>
+    <li>Power Automate & Power Apps</li>
+    <li>SQL, Excel (VBA & Power Query)</li>
     <li>Azure Data Factory, Azure Blob Storage</li>
     <li>PostgreSQL, Pentaho, QlikView</li>
     <li>Prompt Engineering</li>
@@ -267,41 +664,46 @@
   </ul>
 </section>
 
-<section id="projects" tabindex="0" aria-label="Projects section">
-  <h2>My Projects(samples)</h2>
+<section id="projects" tabindex="0" aria-label="Projects section" data-aos="fade-up">
+  <h2>My Projects (samples)</h2>
   <p>All showcased project screenshots were created on my personal computer using publicly available sample data from various internet sources. They do not contain any client-specific or confidential information and were not created at my current or previous employers</p>
   <div class="project-grid">
-    <article class="project" tabindex="0" aria-labelledby="project1-title">
+    <article class="project" tabindex="0" aria-labelledby="project1-title" data-aos="fade-up" data-aos-delay="100">
       <img src="project4.PNG" alt="Screenshot of Inventory Dashboard with real-time tracking and vendor segmentation" loading="lazy" />
       <h3 id="project1-title">Inventory Dashboard</h3>
       <p>Real-time tracking of inventory levels, turnover, and stock value with vendor-wise segmentation.</p>
       <div class="project-details">I built this dashboard for a retail client to help them manage inventory across 20+ warehouses. It includes automated alerts for low stock and integrates with their ERP for nightly refreshes. Result: improved stock turnover by 17% in 6 months.</div>
     </article>
-    <article class="project" tabindex="0" aria-labelledby="project2-title">
+    
+    <article class="project" tabindex="0" aria-labelledby="project2-title" data-aos="fade-up" data-aos-delay="200">
       <img src="project1.PNG" alt="Screenshot of Loan Portfolio Tracker dashboard summarizing loan status and funding" loading="lazy" />
       <h3 id="project2-title">Loan Portfolio Tracker</h3>
       <p>Summarizes loan status, funding trends, and financial health indicators across customer segments.</p>
       <div class="project-details">Developed for a finance team to help monitor loan disbursal and customer risk. Automated data pulls from multiple sources and provided early warnings for NPA risks. Helped reduce manual analysis time by 60%.</div>
     </article>
-    <article class="project" tabindex="0" aria-labelledby="project3-title">
+    
+    <article class="project" tabindex="0" aria-labelledby="project3-title" data-aos="fade-up" data-aos-delay="300">
       <img src="project3.PNG" alt="Screenshot of HR Analytics Dashboard showing attrition and department breakdowns" loading="lazy" />
       <h3 id="project3-title">HR Analytics Dashboard</h3>
       <p>Highlights attrition, salary analysis, and department-wise breakdowns to empower HR decisions.</p>
       <div class="project-details">Implemented for the HR department of a tech company. Enabled real-time attrition tracking and salary benchmarking. Led to data-driven policy changes that improved retention by 12% within one year.</div>
     </article>
-    <article class="project" tabindex="0" aria-labelledby="project4-title">
+    
+    <article class="project" tabindex="0" aria-labelledby="project4-title" data-aos="fade-up" data-aos-delay="400">
       <img src="project5.PNG" alt="Screenshot of Supply Chain Analytics Dashboard showing product flow from procurement to delivery" loading="lazy" />
       <h3 id="project4-title">Supply Chain Analytics</h3>
       <p>Visualizes end-to-end product flow from procurement to delivery across multiple sales channels.</p>
       <div class="project-details">Designed for a manufacturing client to optimize supply routes and reduce delays. Integrated live logistics data and supplier feeds. Resulted in 20% faster order fulfillment and a 10% reduction in logistics costs.</div>
     </article>
-    <article class="project" tabindex="0" aria-labelledby="project5-title">
+    
+    <article class="project" tabindex="0" aria-labelledby="project5-title" data-aos="fade-up" data-aos-delay="500">
       <img src="project2.PNG" alt="Screenshot of Crypto Market Insights dashboard tracking prices and trends" loading="lazy" />
       <h3 id="project5-title">Crypto Market Insights</h3>
       <p>Monitors crypto prices, trends, and volatility using time-based visualizations for investors.</p>
       <div class="project-details">Built for an investment advisory to help clients track and analyze market trends. Developed with real-time APIs and delivered custom alerts for price spikes. Helped users react faster to market changes.</div>
     </article>
-    <article class="project" tabindex="0" aria-labelledby="project6-title">
+    
+    <article class="project" tabindex="0" aria-labelledby="project6-title" data-aos="fade-up" data-aos-delay="600">
       <img src="project6.PNG" alt="Screenshot of Student Evaluation Analysis dashboard tracking performance by gender and assessment" loading="lazy" />
       <h3 id="project6-title">Student Evaluation Analysis</h3>
       <p>Tracks student performance across gender, period, and assessment level to improve learning impact.</p>
@@ -310,7 +712,7 @@
   </div>
 </section>
 
-<section id="resume" tabindex="0" aria-label="Resume section">
+<section id="resume" tabindex="0" aria-label="Resume section" data-aos="fade-up">
   <h2>Resume</h2>
   <iframe 
     src="https://drive.google.com/file/d/1jREpERp33GdmO1lrmThIUjtxxjcVs_oH/preview" 
@@ -323,8 +725,8 @@
   </p>
 </section>
 
-<section id="journey" tabindex="0" aria-label="Professional Journey section">
- <h2>My Journey</h2>
+<section id="journey" tabindex="0" aria-label="Professional Journey section" data-aos="fade-up">
+  <h2>My Journey</h2>
   <p>I was born and brought up in southern Tamil Nadu and moved to Chennai in 2013 to kickstart my career in data. My journey began with MS Access development where I gained hands-on experience in SQL and VBA.</p>
   <p>I transitioned to QlikView development and led a migration from Pentaho dashboards, deepening my understanding of enterprise data environments and PostgreSQL integration.</p>
   <p>A major milestone was implementing a Java-based tool and Excel automation to generate PowerPoint decks for 32 countries in 15 minutes, saving 4.5 FTEs.</p>
@@ -334,30 +736,43 @@
   <p>Leveraging Power Automate, I kept critical business processes running seamlessly, while Power Apps enabled dynamic data collection from stakeholders.</p>
   <p>I utilized Azure Pipelines to simplify ETL processes and built reusable Power BI templates to accelerate dashboard delivery with minimal rework for multiple clients.</p>
   <p>I also acted as a technical decision-maker, advising clients on the right tools and technologies to solve complex data challenges and deliver impactful, actionable insights.</p>
-  <p>Created multiple Co-Pilot agents in Microsoft Copilot Studio, including AI agents that automatically categorize IT tickets based on short descriptions and provide resolution guidance using historical knowledge data, improving triage speed and reducing manual effort.</p> 
- <h2>Leadership</h2>
-    <p> Demonstrates leadership by being approachable, calm, flexible, and complementary, while prioritizing self-care and maintaining a human touch.</p>
-    <p> Demonstrated strong leadership by driving team success and ensuring alignment with organizational goals.</p>
-    <p> Ability to manage multiple projects simultaneously and meet tight deadlines, while maintaining the highest standards of quality.</p>
-    <p> Currently shaping my dream venture, ‘Aegan’ — a future-ready brand delivering intelligent business solutions through AI agents, advanced business intelligence, automation, and creative video services. Combining years of expertise with a vision to empower businesses through innovation. know more: <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">Aegan Tech Services</a></p>
+  <p>Created multiple Co-Pilot agents in Microsoft Copilot Studio, including AI agents that automatically categorize IT tickets based on short descriptions and provide resolution guidance using historical knowledge data, improving triage speed and reducing manual effort.</p>
+  
+  <h2>Leadership</h2>
+  <p>Demonstrates leadership by being approachable, calm, flexible, and complementary, while prioritizing self-care and maintaining a human touch.</p>
+  <p>Demonstrated strong leadership by driving team success and ensuring alignment with organizational goals.</p>
+  <p>Ability to manage multiple projects simultaneously and meet tight deadlines, while maintaining the highest standards of quality.</p>
+  <p>Currently shaping my dream venture, 'Aegan' — a future-ready brand delivering intelligent business solutions through AI agents, advanced business intelligence, automation, and creative video services. Combining years of expertise with a vision to empower businesses through innovation. know more: <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">Aegan Tech Services</a></p>
 </section>
 
-<section id="contact" tabindex="0" aria-label="Contact form section">
+<section id="contact" tabindex="0" aria-label="Contact form section" data-aos="fade-up">
   <h2>Contact Me</h2>
-  <form class="contact-form" action="mailto:aravind.paraniraja@gmail.com" method="post" enctype="text/plain" aria-label="Contact form to reach Aravind Paraniraja">
+  <form class="contact-form" action="https://formsubmit.co/aravind.paraniraja@gmail.com" method="POST" aria-label="Contact form to reach Aravind Paraniraja">
+    <!-- FormSubmit Configuration -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+    <input type="hidden" name="_template" value="table">
+    
     <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
     <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
     <textarea name="message" rows="5" placeholder="Your Message" required aria-required="true"></textarea>
-    <button type="submit">Send Message</button>
+    <button type="submit" id="submit-btn">
+      <span class="btn-text">Send Message</span>
+      <span class="btn-loading" style="display: none;">Sending...</span>
+    </button>
   </form>
+  
+  <!-- Success/Error Messages -->
+  <div id="form-message" style="display: none; margin-top: 15px; padding: 10px; border-radius: 6px; text-align: center;"></div>
 </section>
 </main>
 
 <a href="#top" class="top-link" aria-label="Scroll to top">Top ↑</a>
+<button id="theme-toggle" aria-label="Toggle dark and light mode">🌙 Dark Mode</button>
 
 <!-- Chatbot -->
 <div id="chatbot-container" aria-label="Chatbot widget">
-  <div id="chatbot-toggle" role="button" aria-pressed="false" aria-label="Open chatbot">💬</div>
+  <button id="chatbot-toggle" role="button" aria-pressed="false" aria-label="Open chatbot">💬</button>
   <div id="chatbot-window" role="region" aria-live="polite" aria-hidden="true">
     <div id="chatbot-header">🤖 Aegan Analytics & Automation</div>
     <div id="chatbot-messages" aria-atomic="true" aria-live="polite"></div>
@@ -377,7 +792,63 @@
   <a href="https://github.com/Aravind1089" target="_blank" rel="noopener">GitHub</a>
 </footer>
 
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
+// Initialize AOS animations
+AOS.init({
+  duration: 800,
+  once: true,
+  offset: 100
+});
+
+// Theme toggle with localStorage & system preference
+const themeToggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+function setTheme(theme) {
+  if (theme === 'dark') {
+    body.classList.add('dark');
+    themeToggleBtn.innerHTML = '☀️ Light Mode';
+  } else {
+    body.classList.remove('dark');
+    themeToggleBtn.innerHTML = '🌙 Dark Mode';
+  }
+  localStorage.setItem('theme', theme);
+}
+
+// Initialize theme
+const savedTheme = localStorage.getItem('theme');
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+setTheme(initialTheme);
+
+// Theme toggle event
+themeToggleBtn.addEventListener('click', () => {
+  const currentTheme = body.classList.contains('dark') ? 'light' : 'dark';
+  setTheme(currentTheme);
+});
+
+// Enhanced form submission handling
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const btnLoading = submitBtn.querySelector('.btn-loading');
+  const formMessage = document.getElementById('form-message');
+  
+  // Show loading state
+  btnText.style.display = 'none';
+  btnLoading.style.display = 'inline';
+  submitBtn.disabled = true;
+  
+  // Hide any previous messages
+  formMessage.style.display = 'none';
+  formMessage.className = '';
+  
+  // The form will submit naturally to FormSubmit
+});
+
+// Chatbot functionality
 const toggleBtn = document.getElementById("chatbot-toggle");
 const chatWindow = document.getElementById("chatbot-window");
 const messagesDiv = document.getElementById("chatbot-messages");
@@ -398,7 +869,7 @@ const botResponses = {
   contact: `📧 <a href="mailto:aravind.paraniraja@gmail.com" rel="noopener">aravind.paraniraja@gmail.com</a><br>`,
   journey: `I started in southern Tamil Nadu and moved to Chennai in 2013. My data journey: MS Access ➔ QlikView ➔ Power BI ➔ Azure. I've led dashboard migrations, implemented automation, and now build AI-powered analytics at Aegan Tech Services.`,
   thanks: "🙏 You're welcome!",
-  default: `I’m here to help! Try typing <b>skills</b>, <b>projects</b>, <b>resume</b>, <b>journey</b>, or <b>contact</b>.`
+  default: `I'm here to help! Try typing <b>skills</b>, <b>projects</b>, <b>resume</b>, <b>journey</b>, or <b>contact</b>.`
 };
 
 // Add message function with ARIA live support
@@ -413,7 +884,7 @@ function addMessage(text, sender) {
 // Flag to greet only once
 let hasOpened = false;
 
-// Track current nav for accessibility (optional)
+// Track current nav for accessibility
 const navLinks = document.querySelectorAll('nav a');
 window.addEventListener('hashchange', () => {
   navLinks.forEach(link => {
@@ -443,13 +914,15 @@ toggleBtn.onclick = () => {
   }
 };
 
-// Chatbot keyword detection and more dynamic answers
+// Chatbot keyword detection and dynamic answers
 function sendUserMessage() {
   const input = document.getElementById("userInput");
   const userText = input.value.trim();
   if (!userText) return;
+  
   addMessage(userText, "user");
   input.value = "";
+  
   const lower = userText.toLowerCase();
   if (lower.includes("skill")) {
     addMessage(botResponses.skills, "bot");
@@ -472,6 +945,20 @@ function sendUserMessage() {
 document.getElementById("sendBtn").onclick = sendUserMessage;
 document.getElementById("userInput").addEventListener("keypress", e => {
   if (e.key === "Enter") sendUserMessage();
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
 });
 </script>
 </body>
