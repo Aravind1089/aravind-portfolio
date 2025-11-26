@@ -1,0 +1,80 @@
+*🧠 Spam Classifier AI Project*
+
+*📌 Objective:*  
+Create a machine learning model that classifies text messages as *Spam* or *Ham (Not Spam)*.
+
+*🗂️ Step 1: Load Dataset*  
+Use the *SMS Spam Collection Dataset* (UCI). It contains ~5,000 labeled SMS messages.
+
+```python
+import pandas as pd
+df = pd.read_csv("spam.csv", encoding='latin-1')[['v1', 'v2']]
+df.columns = ['label', 'message']
+```
+
+*🧹 Step 2: Preprocess Text*  
+Clean the messages: lowercase, remove noise, stopwords, and apply stemming.
+
+```python
+import re
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+
+def clean_text(text):
+    text = re.sub('[^a-zA-Z]', ' ', text).lower().split()
+    ps = PorterStemmer()
+    return " ".join([ps.stem(w) for w in text if w not in stopwords.words('english')])
+
+df['clean'] = df['message'].apply(clean_text)
+```
+
+*🧠 Step 3: Feature Engineering (TF-IDF)*  
+Convert text into numerical vectors using TF-IDF.
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+tfidf = TfidfVectorizer(max_features=3000)
+X = tfidf.fit_transform(df['clean']).toarray()
+y = df['label'].map({'ham': 0, 'spam': 1})
+```
+
+*⚙️ Step 4: Train the Model*  
+Split and train using Naive Bayes.
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import classification_report
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+model = MultinomialNB()
+model.fit(X_train, y_train)
+print(classification_report(y_test, model.predict(X_test)))
+```
+
+*🔍 Step 5: Make Predictions*
+
+```python
+def predict_spam(text):
+    cleaned = clean_text(text)
+    vector = tfidf.transform([cleaned])
+    return "Spam" if model.predict(vector)[0] else "Ham"
+
+predict_spam("Congratulations! You've won a free iPhone!")
+```
+
+*🌐 Bonus: Deploy Your Model*  
+
+- Deploy using *Streamlit* or *Flask*
+- Save model with `pickle` or `joblib`
+- Use UI for message input
+
+*✅ Skills You Demonstrate*  
+✔️ NLP Preprocessing  
+✔️ Text Vectorization  
+✔️ Model Building & Evaluation  
+✔️ Real-World Use Case  
+✔️ Optionally: Model Deployment
+
+*Double Tap ♥️ For More*
