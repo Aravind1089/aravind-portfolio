@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>5 Lessons That Transformed My Career in Data Analytics | Aravind Paraniraja</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #007acc;
+      --primary-dark: #005fa3;
+      --light-bg: #ffffff;
+      --light-text: #111;
+      --light-card: #f9f9f9;
+      --dark-bg: #121214;
+      --dark-card: #1c1b29;
+      --dark-text: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      line-height: 1.7;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a:hover, a:focus {
+      color: var(--primary);
+      outline: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 10px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 10000;
+      border-radius: 4px;
+    }
+    .skip-link:focus { left: 10px; }
+
+    /* Header */
+    header {
+      background: var(--light-bg);
+      border-bottom: 1px solid #eee;
+      padding: 18px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    body.dark header {
+      background: var(--dark-card);
+      border-bottom-color: #333;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-subtitle {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    body.dark .brand-subtitle {
+      color: #bbb;
+    }
+
+    .back-link {
+      font-size: 0.95rem;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      background: #f7f7f7;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    body.dark .back-link {
+      background: #1b1b26;
+      border-color: #444;
+      color: var(--dark-text);
+    }
+
+    /* Main layout */
+    main {
+      max-width: 880px;
+      margin: 40px auto 60px;
+      padding: 0 18px 40px;
+    }
+
+    .article-meta {
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    body.dark .article-meta {
+      color: #aaa;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 30px 0 10px;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 6px;
+    }
+
+    body.dark h2 {
+      border-bottom-color: #444;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 18px 0 8px;
+    }
+
+    p {
+      font-size: 1.02rem;
+      font-weight: 300;
+      margin-bottom: 14px;
+      color: #222;
+    }
+
+    body.dark p {
+      color: #ddd;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+      font-size: 1.02rem;
+      font-weight: 300;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      margin-top: 10px;
+      background: var(--light-card);
+      padding: 14px 16px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+    }
+
+    body.dark .lead {
+      background: var(--dark-card);
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #777;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    body.dark .tagline {
+      color: #aaa;
+    }
+
+    .highlight-box {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: #e6f0fa;
+      font-size: 0.98rem;
+    }
+
+    body.dark .highlight-box {
+      background: rgba(0, 122, 204, 0.09);
+    }
+
+    .quote {
+      margin: 16px 0;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+      font-style: italic;
+      font-size: 0.98rem;
+      color: #444;
+    }
+
+    body.dark .quote {
+      color: #ccc;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    .pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      background: #f2f6fb;
+      color: #174d7c;
+      border: 1px solid #d2e3f5;
+    }
+
+    body.dark .pill {
+      background: #1a2935;
+      border-color: #30465a;
+      color: #c6e1ff;
+    }
+
+    .section-card {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: var(--light-card);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    body.dark .section-card {
+      background: var(--dark-card);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .takeaways {
+      margin-top: 10px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #f0f7ff;
+      border: 1px dashed #b7d4ff;
+    }
+
+    body.dark .takeaways {
+      background: rgba(0, 42, 80, 0.7);
+      border-color: #497bb5;
+    }
+
+    .takeaways h3 {
+      margin-top: 0;
+    }
+
+    .author-box {
+      margin-top: 24px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: #f7f7f7;
+      font-size: 0.98rem;
+    }
+
+    body.dark .author-box {
+      background: #191922;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 20px 30px;
+      background: #f7f7f7;
+      color: #555;
+      font-size: 0.92rem;
+      letter-spacing: 0.3px;
+    }
+
+    body.dark footer {
+      background: var(--dark-card);
+      color: var(--dark-text);
+    }
+
+    footer a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Theme toggle */
+    #theme-toggle {
+      position: fixed;
+      left: 20px;
+      bottom: 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(0,122,204,0.35);
+      transition: background 0.3s ease, transform 0.2s ease;
+      z-index: 1000;
+    }
+
+    #theme-toggle:hover, #theme-toggle:focus {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .back-link {
+        align-self: flex-end;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <div class="brand-block">
+    <div class="brand-title">Aravind Paraniraja</div>
+    <div class="brand-subtitle">Data Engineer • Power BI Developer • Automation Specialist</div>
+  </div>
+  <a href="index.html" class="back-link" aria-label="Back to portfolio home">
+    ← Back to Portfolio
+  </a>
+</header>
+
+<main id="main" tabindex="0">
+  <div class="article-meta">
+    <div class="tagline">CAREER • DATA ANALYTICS • LEADERSHIP</div>
+    <span>5 Lessons That Transformed My Career in Data Analytics</span> · 
+    <span>By Aravind Paraniraja</span>
+  </div>
+
+  <h1>5 Lessons That Transformed My Career in Data Analytics</h1>
+
+  <p class="lead">
+    Technical skills got me into the analytics space. But they weren’t what moved my career forward. Over 12+ years across BI, automation, ITSM analytics, and stakeholder-heavy environments, I learned that impact, clarity, and relationships are what actually shape a data career.
+  </p>
+
+  <p>
+    This article shares five lessons that changed the way I think about data, work, and growth. They’re inspired by industry conversations and content like Jess Ramos’s work on analytics careers, but grounded in my own experience building solutions with Power BI, Power Automate, Azure Data Factory, SQL, and more.
+  </p>
+
+  <section class="section-card" aria-label="Lesson 1 - Technical skills and promotions">
+    <h2>Lesson 1: Technical Skills Won’t Get You Promoted</h2>
+    <p>
+      Early in a data career, it’s natural to focus on tools: SQL, Python, DAX, dashboard design, ETL frameworks. These skills are essential – they make you a good analyst or developer. But promotions, leadership opportunities, and strategic roles rarely come <em>just</em> from writing better queries or building prettier visuals.
+    </p>
+    <p>
+      What really unlocks the next level is becoming a <strong>multiplier</strong>:
+    </p>
+    <ul>
+      <li>Turning dashboards into decisions and business outcomes.</li>
+      <li>Stepping up to mentor junior analysts and developers.</li>
+      <li>Owning problems end-to-end instead of just delivering tasks.</li>
+      <li>Helping stakeholders see what they <em>should</em> measure, not just what they asked for.</li>
+    </ul>
+    <p>
+      Stakeholders don’t promote you because you know one more function in DAX. They promote you because you help them hit their revenue, cost, service, or operational targets consistently.
+    </p>
+    <div class="highlight-box">
+      <strong>Signal of readiness:</strong> when people outside your immediate team start seeking you out for guidance – not only on “how to build this report,” but on “what should we be looking at to solve this business problem?”
+    </div>
+  </section>
+
+  <section class="section-card" aria-label="Lesson 2 - Data doesn’t always exist">
+    <h2>Lesson 2: The Data Doesn’t Always Exist</h2>
+    <p>
+      In theory, we imagine clean, well-structured, centralized datasets. In reality, data is often:
+    </p>
+    <ul>
+      <li>Incomplete or missing for key periods.</li>
+      <li>Split across systems with no reliable keys.</li>
+      <li>Logged in free text instead of structured fields.</li>
+      <li>Not collected at all for what the business suddenly cares about today.</li>
+    </ul>
+    <p>
+      Analysts who remain “report-only” tend to get blocked here. Analysts who think like problem solvers do something different: they work cross-functionally, propose new tracking mechanisms, redesign how data is captured at the source, or creatively repurpose existing fields.
+    </p>
+    <p>
+      Sometimes that means collaborating with engineering to create events on the front-end. Sometimes it’s working with operations to standardize how something is recorded. The role quietly shifts from “consumer of data” to “designer of how data should be captured and used.”
+    </p>
+    <div class="highlight-box">
+      <strong>Career unlock:</strong> you stop saying “we can’t do this because the data doesn’t exist” and start saying “here is what we can do now – and here’s how we can make the data better going forward.”
+    </div>
+  </section>
+
+  <section class="section-card" aria-label="Lesson 3 - Asking why before doing">
+    <h2>Lesson 3: Always Ask “Why?” Before Doing</h2>
+    <p>
+      One of the biggest risks in a data role is becoming a <strong>“reporting vending machine”</strong> – a ticket comes in, a report goes out. No context, no challenge, no conversation.
+    </p>
+    <p>
+      High-impact analysts behave differently. Before building, they pause and ask:
+    </p>
+    <ul>
+      <li>Why is this needed right now?</li>
+      <li>What decision will this report influence?</li>
+      <li>What action do we expect someone to take based on this?</li>
+      <li>What happens if we don’t build this?</li>
+    </ul>
+    <p>
+      These questions do a few powerful things: they prevent wasted effort, clarify success criteria, and often reshape the request into something much more valuable and targeted.
+    </p>
+    <div class="quote">
+      When you start acting as a <strong>data advisor</strong> instead of just a report builder, your conversations move closer to strategy and farther from pure execution.
+    </div>
+  </section>
+
+  <section class="section-card" aria-label="Lesson 4 - Living in the gray area">
+    <h2>Lesson 4: Learn to Live in the Gray Area</h2>
+    <p>
+      In the real world, data is rarely black and white. You may see conflicting numbers between systems, gaps in logging, or metrics that change definition halfway through the year. Waiting for perfect data usually means missing the decision window entirely.
+    </p>
+    <p>
+      The real value of an analyst lies in:
+    </p>
+    <ul>
+      <li>Clearly stating assumptions and limitations.</li>
+      <li>Quantifying risk ranges instead of pretending there’s a single exact answer.</li>
+      <li>Proposing scenarios: best case, base case, worst case.</li>
+      <li>Helping stakeholders make confident decisions even with partial information.</li>
+    </ul>
+    <p>
+      This is where data work starts to overlap with judgment, business context, and communication. You’re not just pushing numbers – you’re guiding decisions under uncertainty.
+    </p>
+    <div class="highlight-box">
+      <strong>Analyst maturity:</strong> accepting that “we’ll never have 100% perfect data” and still being able to say, “here’s what I recommend we do next.”
+    </div>
+  </section>
+
+  <section class="section-card" aria-label="Lesson 5 - Managers shape data culture">
+    <h2>Lesson 5: Your Manager Shapes Data Culture</h2>
+    <p>
+      This last lesson is more about environment than individual skills. A strong manager can completely change your experience as a data professional.
+    </p>
+    <p>
+      Great managers:
+    </p>
+    <ul>
+      <li>Advocate for the value of data in leadership conversations.</li>
+      <li>Shield the team from unreasonable demands and chaotic priorities.</li>
+      <li>Push for better data quality and realistic timelines.</li>
+      <li>Celebrate not just dashboards, but the decisions they enabled.</li>
+    </ul>
+    <p>
+      When that happens, analysts have the space to do deeper work: exploring root causes, designing better models, testing hypotheses, and advising rather than firefighting.
+    </p>
+    <p>
+      As you grow in your career and start mentoring or leading others, you become part of that culture-setting layer. How you frame requests, protect focus time, and represent your team to stakeholders all matters.
+    </p>
+  </section>
+
+  <section class="takeaways" aria-label="Key takeaways">
+    <h3>Key Takeaways</h3>
+    <div class="pill-list">
+      <span class="pill">Impact over outputs</span>
+      <span class="pill">Designing data, not just using it</span>
+      <span class="pill">Advisor mindset</span>
+      <span class="pill">Comfort with ambiguity</span>
+      <span class="pill">Culture and leadership</span>
+    </div>
+    <p>
+      Technical skills remain the foundation of any data role. But sustainable growth comes when you pair them with curiosity, business understanding, and the ability to navigate people and systems.
+    </p>
+    <p>
+      The analysts who grow fastest are rarely the ones who know the most tools. They’re the ones who consistently turn data into <strong>decisions, outcomes, and trust</strong>.
+    </p>
+  </section>
+
+  <section class="author-box" aria-label="About the author">
+    <strong>About the Author</strong>
+    <p>
+      I’m <strong>Aravind Paraniraja</strong>, a data engineer and Power BI developer with 12+ years of experience across MS Access, SQL, VBA, QlikView, Power BI, Power Automate, Azure Data Factory, and enterprise reporting. I’ve designed and led zero-touch automation, ITSM analytics, and cross-domain BI solutions — and I’m building <strong>Aegan</strong>, a future-ready brand focused on AI-powered analytics, automation, and intelligent business solutions.
+    </p>
+    <p>
+      Connect with me on 
+      <a href="https://www.linkedin.com/in/aravindparaniraja" target="_blank" rel="noopener">LinkedIn</a> 
+      or explore more of my work on my 
+      <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">portfolio</a>.
+    </p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Aravind Paraniraja • Data Engineering & Analytics Insights
+  &nbsp;|&nbsp;
+  <a href="index.html">Back to Portfolio</a>
+</footer>
+
+<button id="theme-toggle" aria-label="Toggle dark and light mode">🌙 Dark Mode</button>
+
+<script>
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      body.classList.add('dark');
+      themeToggleBtn.innerHTML = '☀️ Light Mode';
+    } else {
+      body.classList.remove('dark');
+      themeToggleBtn.innerHTML = '🌙 Dark Mode';
+    }
+    localStorage.setItem('article-theme', theme);
+  }
+
+  const savedTheme = localStorage.getItem('article-theme');
+  const systemPrefersDark = window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  setTheme(initialTheme);
+
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = body.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(currentTheme);
+  });
+</script>
+</body>
+</html>
