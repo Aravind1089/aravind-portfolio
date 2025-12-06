@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Analyst Roadmap 2026 – My Perspective | Aravind Paraniraja</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #007acc;
+      --primary-dark: #005fa3;
+      --light-bg: #ffffff;
+      --light-text: #111;
+      --light-card: #f9f9f9;
+      --dark-bg: #121214;
+      --dark-card: #1c1b29;
+      --dark-text: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      line-height: 1.7;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a:hover, a:focus {
+      color: var(--primary);
+      outline: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 10px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 10000;
+      border-radius: 4px;
+    }
+    .skip-link:focus { left: 10px; }
+
+    /* Header */
+    header {
+      background: var(--light-bg);
+      border-bottom: 1px solid #eee;
+      padding: 18px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    body.dark header {
+      background: var(--dark-card);
+      border-bottom-color: #333;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-subtitle {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    body.dark .brand-subtitle {
+      color: #bbb;
+    }
+
+    .back-link {
+      font-size: 0.95rem;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      background: #f7f7f7;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    body.dark .back-link {
+      background: #1b1b26;
+      border-color: #444;
+      color: var(--dark-text);
+    }
+
+    /* Main layout */
+    main {
+      max-width: 880px;
+      margin: 40px auto 60px;
+      padding: 0 18px 40px;
+    }
+
+    .article-meta {
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    body.dark .article-meta {
+      color: #aaa;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 30px 0 10px;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 6px;
+    }
+
+    body.dark h2 {
+      border-bottom-color: #444;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 18px 0 8px;
+    }
+
+    p {
+      font-size: 1.02rem;
+      font-weight: 300;
+      margin-bottom: 14px;
+      color: #222;
+    }
+
+    body.dark p {
+      color: #ddd;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+      font-size: 1.02rem;
+      font-weight: 300;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      margin-top: 10px;
+      background: var(--light-card);
+      padding: 14px 16px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+    }
+
+    body.dark .lead {
+      background: var(--dark-card);
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #777;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    body.dark .tagline {
+      color: #aaa;
+    }
+
+    .highlight-box {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: #e6f0fa;
+      font-size: 0.98rem;
+    }
+
+    body.dark .highlight-box {
+      background: rgba(0, 122, 204, 0.09);
+    }
+
+    .quote {
+      margin: 16px 0;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+      font-style: italic;
+      font-size: 0.98rem;
+      color: #444;
+    }
+
+    body.dark .quote {
+      color: #ccc;
+    }
+
+    .section-card {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: var(--light-card);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    body.dark .section-card {
+      background: var(--dark-card);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .takeaways {
+      margin-top: 10px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #f0f7ff;
+      border: 1px dashed #b7d4ff;
+    }
+
+    body.dark .takeaways {
+      background: rgba(0, 42, 80, 0.7);
+      border-color: #497bb5;
+    }
+
+    .takeaways h3 {
+      margin-top: 0;
+    }
+
+    .author-box {
+      margin-top: 24px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: #f7f7f7;
+      font-size: 0.98rem;
+    }
+
+    body.dark .author-box {
+      background: #191922;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 20px 30px;
+      background: #f7f7f7;
+      color: #555;
+      font-size: 0.92rem;
+      letter-spacing: 0.3px;
+    }
+
+    body.dark footer {
+      background: var(--dark-card);
+      color: var(--dark-text);
+    }
+
+    footer a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Theme toggle */
+    #theme-toggle {
+      position: fixed;
+      left: 20px;
+      bottom: 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(0,122,204,0.35);
+      transition: background 0.3s ease, transform 0.2s ease;
+      z-index: 1000;
+    }
+
+    #theme-toggle:hover, #theme-toggle:focus {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .back-link {
+        align-self: flex-end;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <div class="brand-block">
+    <div class="brand-title">Aravind Paraniraja</div>
+    <div class="brand-subtitle">Data Engineer • Power BI Developer • Automation Specialist</div>
+  </div>
+  <a href="index.html" class="back-link" aria-label="Back to portfolio home">
+    ← Back to Portfolio
+  </a>
+</header>
+
+<main id="main" tabindex="0">
+  <div class="article-meta">
+    <div class="tagline">CAREER • DATA ANALYTICS • ROADMAP 2026</div>
+    <span>Becoming a Data Analyst in 2026</span> · 
+    <span>By Aravind Paraniraja</span>
+  </div>
+
+  <h1>Becoming a Data Analyst in 2026: What I Wish I Knew When I Started</h1>
+
+  <p class="lead">
+    The data world in 2026 looks very different from when I began my journey more than a decade ago. Back in 2013, I started with MS Access, SQL, VBA, and traditional reporting tools. Today, the expectations from a data analyst are tougher, the tools are smarter, and the competition is stronger – but the opportunities are also bigger than ever.
+  </p>
+
+  <p>
+    This roadmap is inspired by ideas shared by Jess Ramos in her “Data Analyst Roadmap 2026” video, combined with my own experience working across BI, automation, ITSM analytics, and stakeholder-heavy environments. My goal is simple: to give you a realistic, actionable path you can use to build or grow your data analyst career in 2026 and beyond.
+  </p>
+
+  <section class="section-card" aria-label="New skills that matter">
+    <h2>1. The New Skills That Actually Matter in 2026</h2>
+    <p>
+      The era of the “dashboard-only analyst” is over. Companies no longer want someone who only drags and drops visuals in a BI tool. They want analysts who can work across the stack: from raw data to business recommendations.
+    </p>
+
+    <h3>SQL: The Non-Negotiable Foundation</h3>
+    <p>
+      In my own work – from building Power BI models to orchestrating data flows with Azure Data Factory – SQL has been the backbone. It’s not enough to know basic SELECTs and JOINs. Interview-level expectations now include:
+    </p>
+    <ul>
+      <li>Window functions (RANK, ROW_NUMBER, moving averages).</li>
+      <li>CTEs and subqueries for cleaner logic.</li>
+      <li>Combining multiple tables and sources into a meaningful model.</li>
+      <li>Basic understanding of data modeling and normalization.</li>
+    </ul>
+    <p>
+      The specific SQL dialect (MySQL, SQL Server, PostgreSQL, etc.) is less important. The logic is 90–95% the same everywhere. Focus on principles, not brands.
+    </p>
+
+    <h3>BI Tools Still Matter – But They Are Not the Hero</h3>
+    <p>
+      Power BI, Tableau, Qlik – these are still essential. They’re how you present the story. But they are just the surface layer. What truly differentiates you is how well you:
+    </p>
+    <ul>
+      <li>Design data models that perform well.</li>
+      <li>Choose the right metrics and KPIs for the business problem.</li>
+      <li>Build dashboards that lead to decisions, not just pretty charts.</li>
+    </ul>
+
+    <h3>Data Literacy: Statistics, Outliers, and Distributions</h3>
+    <p>
+      You don’t need a PhD in statistics, but you do need enough to avoid misleading stakeholders. In my experience, even simple concepts like:
+    </p>
+    <ul>
+      <li>Mean, median, percentiles.</li>
+      <li>Detecting outliers.</li>
+      <li>Understanding how data is distributed.</li>
+    </ul>
+    <p>
+      …can prevent bad decisions from “good-looking” reports.
+    </p>
+
+    <h3>Storytelling and Stakeholder Communication</h3>
+    <p>
+      One pattern I’ve seen repeatedly: the analysts who grow fastest are rarely the most technical. They’re the ones who can sit with non-technical stakeholders and explain complex trends in simple, direct language – and then recommend what to do about it.
+    </p>
+
+    <h3>AI Tools as a Force Multiplier</h3>
+    <p>
+      Tools like ChatGPT and Claude are not threats – they’re accelerators. I use AI to help draft queries, speed up documentation, generate starting points for code, and explore alternative solutions. Use AI to move faster, but don’t outsource your thinking.
+    </p>
+
+    <div class="highlight-box">
+      <strong>Bottom line:</strong> In 2026, a strong data analyst is part engineer, part storyteller, and part business partner. Tools support you – but your thinking is what creates value.
+    </div>
+  </section>
+
+  <section class="section-card" aria-label="Portfolio strategy">
+    <h2>2. Portfolio Strategy That Actually Works Now</h2>
+    <p>
+      If you don’t have much work experience, your portfolio <strong>is</strong> your experience. Even with experience, a good portfolio gives structure to your story and becomes your anchor in interviews.
+    </p>
+
+    <h3>Stop Using Generic Datasets</h3>
+    <p>
+      Titanic, Iris, Superstore – these have been used to death. They don’t reflect real-world complexity, and they don’t say anything unique about you. In my own journey across finance, HR, ITSM, and supply chain analytics, I’ve seen that domain context matters a lot.
+    </p>
+    <p>
+      Instead, pick datasets and problems that match your target industry:
+    </p>
+    <ul>
+      <li><strong>Finance:</strong> loan portfolios, mortgage risk, revenue vs. cost analysis.</li>
+      <li><strong>HR:</strong> attrition analysis, performance distribution, salary benchmarking.</li>
+      <li><strong>Retail & Supply Chain:</strong> inventory turnover, stock-outs, lead times.</li>
+      <li><strong>IT & Service Desk:</strong> incident volume, SLA breaches, ticket categorization.</li>
+    </ul>
+
+    <h3>Show End-to-End Thinking, Not Just Visuals</h3>
+    <p>
+      A strong project in your portfolio should read like a mini case study. I recommend structuring each project as:
+    </p>
+    <ul>
+      <li><strong>Executive summary</strong> – 3–5 lines on what you did and why it matters.</li>
+      <li><strong>Business problem</strong> – what were we trying to improve or understand?</li>
+      <li><strong>Data understanding & preparation</strong> – what did the raw data look like, and what did you have to fix or derive?</li>
+      <li><strong>Methodology</strong> – logic, SQL, modeling and assumptions.</li>
+      <li><strong>Skills used</strong> – tools, techniques, functions.</li>
+      <li><strong>Insights & results</strong> – what did you find?</li>
+      <li><strong>Business recommendations</strong> – what should the stakeholder do with this?</li>
+      <li><strong>Limitations & next steps</strong> – what could be improved with more time or better data?</li>
+    </ul>
+    <p>
+      This format mirrors how real projects are discussed in organizations – and it immediately positions you as someone who can work beyond toy examples.
+    </p>
+  </section>
+
+  <section class="section-card" aria-label="Networking strategy">
+    <h2>3. Networking: The “Secret Sauce” You Can’t Skip</h2>
+    <p>
+      Skills get you qualified. Networking gets you noticed.
+    </p>
+    <p>
+      One thing I’ve learned over the years: many roles are influenced or unlocked by people who already know your work, your attitude, or your potential. That’s where networking comes in.
+    </p>
+
+    <h3>Make LinkedIn Work for You</h3>
+    <p>
+      LinkedIn is still the most practical platform for data professionals. A few things that go a long way:
+    </p>
+    <ul>
+      <li>Clean, professional profile with a clear headline and “About” section.</li>
+      <li>Featured section with portfolio links and key projects.</li>
+      <li>Regular posts sharing your learnings, dashboards, or mini-case studies.</li>
+      <li>Thoughtful comments on others’ posts – this builds visibility quietly.</li>
+    </ul>
+
+    <h3>Build Relationships Before You Need Them</h3>
+    <p>
+      Don’t wait until you’re desperate for a job to start connecting. Reach out to:
+    </p>
+    <ul>
+      <li>Data analysts working in your target industry.</li>
+      <li>Leads and managers in analytics teams.</li>
+      <li>Recruiters who specialize in data roles.</li>
+    </ul>
+    <p>
+      Engage with their content, ask good questions, and share what you’re working on. When you eventually ask for a call or reference, it won’t feel random.
+    </p>
+
+    <h3>Online + Offline</h3>
+    <p>
+      Online networking is powerful, but don’t ignore offline opportunities – meetups, local tech events, Power BI user groups, and conferences. These environments are where longer-term professional relationships are born.
+    </p>
+  </section>
+
+  <section class="section-card" aria-label="Why it is still worth it">
+    <h2>4. Why Becoming a Data Analyst in 2026 Is Still Worth It</h2>
+    <p>
+      With all the noise about AI and automation, it’s fair to ask: is it still worth becoming a data analyst?
+    </p>
+    <p>In my view, the answer is still a strong <strong>yes</strong>.</p>
+
+    <h3>Flexibility and Remote Options</h3>
+    <p>
+      Many analytics roles are remote-friendly or hybrid, which gives you flexibility in how and where you work. This has become increasingly important for work–life integration.
+    </p>
+
+    <h3>Strong Earning Potential</h3>
+    <p>
+      Globally, data roles continue to pay well – especially as you move into senior analyst, analytics engineer, or analytics lead roles. Even in India and APAC, remote and contract roles are opening up global-level pay bands for strong profiles.
+    </p>
+
+    <h3>Impact That Feels Real</h3>
+    <p>
+      The part I still enjoy most is that data work has visible impact. The dashboards, automations, and models you build can:
+    </p>
+    <ul>
+      <li>Reduce customer waiting times.</li>
+      <li>Improve service levels.</li>
+      <li>Optimize costs and operations.</li>
+      <li>Support decisions that affect real people and real businesses.</li>
+    </ul>
+    <p>
+      That sense of impact is what keeps this career meaningful.
+    </p>
+  </section>
+
+  <section class="takeaways" aria-label="Key takeaways">
+    <h3>Key Takeaways for Your 2026 Roadmap</h3>
+    <ul>
+      <li>Master SQL and data modeling – these are your foundations.</li>
+      <li>Use BI tools to tell stories, not just show charts.</li>
+      <li>Build industry-relevant portfolio projects that feel like real work.</li>
+      <li>Practice explaining insights in simple, non-technical language.</li>
+      <li>Use AI tools to accelerate, not replace, your thinking.</li>
+      <li>Invest steadily in networking – online and offline.</li>
+    </ul>
+    <p>
+      If you focus on these areas, you won’t just “learn data analytics” – you’ll build a career that stays relevant even as tools, trends, and platforms change.
+    </p>
+  </section>
+
+  <section class="author-box" aria-label="About the author">
+    <strong>About the Author</strong>
+    <p>
+      I’m <strong>Aravind Paraniraja</strong>, a data engineer and Power BI developer with 12+ years of experience across MS Access, SQL, VBA, QlikView, Power BI, Power Automate, Azure Data Factory, and enterprise reporting. I’ve led automation and analytics solutions across logistics, IT service management, finance, HR, and more – and I’m building <strong>Aegan</strong>, a future-ready brand focused on AI-powered analytics, automation, and intelligent business solutions.
+    </p>
+    <p>
+      Connect with me on 
+      <a href="https://www.linkedin.com/in/aravindparaniraja" target="_blank" rel="noopener">LinkedIn</a> 
+      or explore more of my work on my 
+      <a href="https://aravind1089.github.io/homepage/" target="_blank" rel="noopener">portfolio</a>.
+    </p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Aravind Paraniraja • Data Engineering & Analytics Insights
+  &nbsp;|&nbsp;
+  <a href="index.html">Back to Portfolio</a>
+</footer>
+
+<button id="theme-toggle" aria-label="Toggle dark and light mode">🌙 Dark Mode</button>
+
+<script>
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      body.classList.add('dark');
+      themeToggleBtn.innerHTML = '☀️ Light Mode';
+    } else {
+      body.classList.remove('dark');
+      themeToggleBtn.innerHTML = '🌙 Dark Mode';
+    }
+    localStorage.setItem('article-theme-roadmap', theme);
+  }
+
+  const savedTheme = localStorage.getItem('article-theme-roadmap');
+  const systemPrefersDark = window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  setTheme(initialTheme);
+
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = body.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(currentTheme);
+  });
+</script>
+</body>
+</html>
